@@ -1,0 +1,175 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "reservoir": "https://reservoir.tools/vocab#",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "image": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+
+    "NFTMarketplace": "schema:OnlineBusiness",
+    "nftCollection": {
+      "@id": "reservoir:nftCollection",
+      "@type": "@id"
+    },
+    "nftToken": {
+      "@id": "reservoir:nftToken",
+      "@type": "@id"
+    },
+    "contractAddress": {
+      "@id": "reservoir:contractAddress",
+      "@type": "xsd:string"
+    },
+    "tokenId": {
+      "@id": "reservoir:tokenId",
+      "@type": "xsd:string"
+    },
+    "chainId": {
+      "@id": "reservoir:chainId",
+      "@type": "xsd:integer"
+    },
+    "chainName": {
+      "@id": "reservoir:chainName",
+      "@type": "xsd:string"
+    },
+
+    "Order": "reservoir:Order",
+    "Ask": "reservoir:Ask",
+    "Bid": "reservoir:Bid",
+    "orderId": {
+      "@id": "reservoir:orderId",
+      "@type": "xsd:string"
+    },
+    "orderKind": {
+      "@id": "reservoir:orderKind",
+      "@type": "xsd:string"
+    },
+    "orderStatus": {
+      "@id": "reservoir:orderStatus",
+      "@type": "xsd:string"
+    },
+    "maker": {
+      "@id": "reservoir:maker",
+      "@type": "xsd:string"
+    },
+    "taker": {
+      "@id": "reservoir:taker",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "currency": {
+      "@id": "schema:currency",
+      "@type": "xsd:string"
+    },
+    "floorPrice": {
+      "@id": "reservoir:floorPrice",
+      "@type": "xsd:decimal"
+    },
+    "topBid": {
+      "@id": "reservoir:topBid",
+      "@type": "xsd:decimal"
+    },
+    "source": {
+      "@id": "reservoir:source",
+      "@type": "xsd:string"
+    },
+    "marketplace": {
+      "@id": "reservoir:marketplace",
+      "@type": "xsd:string"
+    },
+
+    "Sale": "reservoir:Sale",
+    "saleId": {
+      "@id": "reservoir:saleId",
+      "@type": "xsd:string"
+    },
+    "saleTimestamp": {
+      "@id": "reservoir:saleTimestamp",
+      "@type": "xsd:dateTime"
+    },
+    "transactionHash": {
+      "@id": "reservoir:transactionHash",
+      "@type": "xsd:string"
+    },
+    "blockNumber": {
+      "@id": "reservoir:blockNumber",
+      "@type": "xsd:integer"
+    },
+
+    "Collection": "reservoir:Collection",
+    "collectionId": {
+      "@id": "reservoir:collectionId",
+      "@type": "xsd:string"
+    },
+    "collectionSlug": {
+      "@id": "reservoir:collectionSlug",
+      "@type": "xsd:string"
+    },
+    "tokenCount": {
+      "@id": "reservoir:tokenCount",
+      "@type": "xsd:integer"
+    },
+    "onSaleCount": {
+      "@id": "reservoir:onSaleCount",
+      "@type": "xsd:integer"
+    },
+    "ownerCount": {
+      "@id": "reservoir:ownerCount",
+      "@type": "xsd:integer"
+    },
+    "volume": {
+      "@id": "reservoir:volume",
+      "@type": "xsd:decimal"
+    },
+    "rank": {
+      "@id": "reservoir:rank",
+      "@type": "xsd:integer"
+    },
+
+    "Token": "reservoir:Token",
+    "rarityScore": {
+      "@id": "reservoir:rarityScore",
+      "@type": "xsd:decimal"
+    },
+    "rarityRank": {
+      "@id": "reservoir:rarityRank",
+      "@type": "xsd:integer"
+    },
+    "lastSalePrice": {
+      "@id": "reservoir:lastSalePrice",
+      "@type": "xsd:decimal"
+    },
+    "attributes": {
+      "@id": "reservoir:attributes",
+      "@container": "@list"
+    },
+
+    "ApiKey": "reservoir:ApiKey",
+    "apiKey": {
+      "@id": "reservoir:apiKey",
+      "@type": "xsd:string"
+    },
+    "rateLimit": {
+      "@id": "reservoir:rateLimit",
+      "@type": "xsd:integer"
+    },
+
+    "WebSocketEvent": "reservoir:WebSocketEvent",
+    "eventType": {
+      "@id": "reservoir:eventType",
+      "@type": "xsd:string"
+    }
+  }
+}
