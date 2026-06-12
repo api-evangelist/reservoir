@@ -1,0 +1,71 @@
+aid: reservoir
+name: Reservoir
+description: NFT marketplace infrastructure and data API for aggregating listings, bids, and sales across OpenSea, Blur, and other markets — powers buying, selling, and analytics across 30+ EVM chains. Reservoir provided a complete suite of APIs, SDKs, and UI kits abstracting the complexity of interacting with the NFT market. The service was sunset on October 15, 2025.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/reservoir/refs/heads/main/apis.yml
+created: "2026-06-12"
+modified: "2026-06-12"
+specificationVersion: "0.19"
+tags:
+  - NFT
+  - Blockchain
+  - Marketplace
+  - Ethereum
+  - EVM
+  - Liquidity
+  - Order Book
+  - Web3
+  - DeFi
+  - Trading
+  - Data API
+
+apis:
+  - name: Reservoir NFT API
+    description: All-in-one NFT data and trading API enabling developers to get NFT data, create orders, and execute trades across 30+ EVM-compatible blockchains. Aggregates liquidity from major NFT marketplaces including OpenSea and Blur.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://reservoir.dev/
+    baseURL: https://api.reservoir.tools
+    tags:
+      - NFT
+      - Marketplace
+      - Trading
+      - Liquidity Aggregation
+      - EVM
+    properties:
+      - type: Documentation
+        url: https://nft.reservoir.tools/reference/overview
+      - type: OpenAPI
+        url: https://reservoirprotocol.readme.io/llms.txt
+      - type: GettingStarted
+        url: https://nft.reservoir.tools/reference/getting-started
+      - type: Authentication
+        url: https://nft.reservoir.tools/reference/dashboard-sign-up
+
+common:
+  - type: Website
+    url: https://reservoir.dev/
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GitHub
+    url: https://github.com/reservoirprotocol
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/uneven-labs
+  - type: Blog
+    url: https://reservoir.dev/blog
+  - type: Pricing
+    url: https://reservoir.tools/pricing
+  - type: StatusPage
+    url: https://status.reservoir.tools/
+  - type: X
+    url: https://x.com/reservoir0x
+  - type: Plans
+    url: plans/reservoir-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/reservoir-rate-limits.yml
+  - type: FinOps
+    url: finops/reservoir-finops.yml
+
+maintainers:
+  - name: Kin Lane
+    email: kin@apievangelist.com

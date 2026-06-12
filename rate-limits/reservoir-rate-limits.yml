@@ -1,0 +1,51 @@
+specificationVersion: "0.1"
+id: reservoir-rate-limits
+name: Reservoir API Rate Limits
+description: Rate limiting policies for the Reservoir NFT API. The API enforced per-key rate limits, retrievable via the /api-keys/{key}/rate-limits endpoint. Limits varied by plan tier.
+url: https://nft.reservoir.tools/reference/overview
+created: "2026-06-12"
+modified: "2026-06-12"
+
+rateLimits:
+  - name: Free Tier Rate Limit
+    description: Default rate limit for free API keys obtained through the Reservoir Developer Dashboard. Applied per API key per chain.
+    plan: Free
+    scope: per API key, per chain
+    notes: >
+      Reservoir API keys are chain-specific — a separate key is required for each EVM chain.
+      The exact requests-per-second figure for the free tier was not publicly documented.
+      Developers could query their current rate limit status via the /api-keys/{key}/rate-limits endpoint.
+    endpoint: /api-keys/{key}/rate-limits
+    method: GET
+
+  - name: Growth Tier Rate Limit
+    description: Elevated rate limits for paid Growth plan subscribers. Specific values were configurable and provided upon plan activation.
+    plan: Growth
+    scope: per API key, per chain
+    notes: >
+      Higher throughput than free tier. Exact limits were negotiated at plan signup.
+      Rate limit status queryable via /api-keys/{key}/rate-limits.
+    endpoint: /api-keys/{key}/rate-limits
+    method: GET
+
+  - name: Enterprise Tier Rate Limit
+    description: Custom, high-throughput rate limits for enterprise clients including major NFT marketplaces and wallets (Coinbase, MetaMask, Magic Eden).
+    plan: Enterprise
+    scope: per API key, per chain
+    notes: >
+      Custom limits set per client SLA. Reservoir supported production-grade throughput
+      for enterprise customers powering large-scale NFT marketplace backends.
+    endpoint: /api-keys/{key}/rate-limits
+    method: GET
+
+policies:
+  - name: Chain-Specific Keys
+    description: API keys are not universal across all available chains. A separate API key must be created for every EVM chain the developer intends to query.
+  - name: Rate Limit Introspection
+    description: Developers can retrieve their current rate limits programmatically via GET /api-keys/{key}/rate-limits. HTTP 429 responses indicate rate limit exceeded.
+  - name: Unauthenticated Access
+    description: The public API (no key) provides limited access. A valid API key is required for production use and higher request volumes.
+
+notes: >
+  Reservoir NFT API was sunset on October 15, 2025. These rate limits reflect the
+  service as it operated during its active period (2021–2025).

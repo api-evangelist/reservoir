@@ -1,0 +1,71 @@
+specificationVersion: "1.0"
+id: reservoir-finops
+name: Reservoir API FinOps
+description: FinOps Framework FOCUS-aligned cost management reference for the Reservoir NFT API. Covers cost allocation, optimization, and governance for teams consuming Reservoir's NFT data and trading infrastructure.
+url: https://reservoir.tools/pricing
+created: "2026-06-12"
+modified: "2026-06-12"
+
+serviceStatus: sunset
+sunsetDate: "2025-10-15"
+sunsetAnnouncement: https://x.com/reservoir0x/status/1912207186941313091
+
+provider:
+  name: Reservoir (Uneven Labs)
+  website: https://reservoir.dev/
+  funding: "$14M Series A (Union Square Ventures)"
+  founded: "2021"
+  headquarters: Wilmington, Delaware, USA
+
+costAllocation:
+  - dimension: API Key
+    description: Each API key maps to a single EVM chain. Cost and usage tracking is performed per key; teams managing multiple chains should maintain separate keys and track spend per chain.
+  - dimension: Chain
+    description: Reservoir charged independently for usage on each supported EVM chain. Multi-chain deployments multiplied effective API costs.
+  - dimension: Endpoint Category
+    description: >
+      Endpoint categories include Trading (buy/sell/bid/list/mint), Data (collections, tokens, sales, portfolios),
+      and Streaming (real-time price events). Higher-volume categories such as real-time streaming
+      generally contributed more to rate limit consumption.
+
+optimization:
+  - practice: Chain Scoping
+    description: Limit API keys and queries to only the EVM chains your application actively serves. Avoid provisioning keys for unused chains.
+  - practice: Caching NFT Data
+    description: Cache frequently-accessed collection, token, and floor price data client-side to reduce redundant API calls and stay within rate limits on lower-cost plans.
+  - practice: Webhook/Event Streaming
+    description: Prefer event streaming (ask/bid/price events) over polling endpoints for real-time data, reducing per-request volume.
+  - practice: Plan Right-Sizing
+    description: Start on the free tier for development and proof-of-concept work; upgrade to Growth or Enterprise only when rate limits become a bottleneck.
+  - practice: Rate Limit Monitoring
+    description: Regularly query /api-keys/{key}/rate-limits to track consumption. Set internal alerting at 80% of plan limit to avoid service interruption.
+
+governance:
+  - control: API Key Management
+    description: Issue separate API keys per chain and per team or service. Rotate keys periodically and revoke unused keys via the Developer Dashboard.
+  - control: Cost Visibility
+    description: Tag API keys by product, team, or environment (dev/staging/prod) to enable chargeback and showback reporting.
+  - control: Budget Thresholds
+    description: Establish monthly API budget caps per team. For paid plans, negotiate overage policies with Reservoir sales before production launch.
+  - control: Sunset Planning
+    description: >
+      Reservoir announced its API sunset on April 15, 2025, with a shutdown date of October 15, 2025.
+      Organizations consuming Reservoir should have migrated to alternative NFT data providers
+      (e.g., Alchemy NFT API, OpenSea API, Moralis, Simplehash) before the shutdown.
+
+focus:
+  resourceType: API Service
+  serviceName: Reservoir NFT API
+  serviceCategory: NFT Data & Trading Infrastructure
+  billingModel: Freemium with tiered paid plans
+  pricingModel: Per-plan subscription (free, growth, enterprise)
+  costDrivers:
+    - API requests per chain
+    - Plan tier
+    - Number of chains monitored
+  currency: USD
+
+notes: >
+  Reservoir was operated by Uneven Labs and raised $14M in Series A funding from Union Square Ventures.
+  Its customers included Coinbase, MetaMask, and Magic Eden. The service was sunset on October 15, 2025.
+  Teams should have migrated to alternative NFT infrastructure providers.

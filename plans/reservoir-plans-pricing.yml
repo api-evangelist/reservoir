@@ -1,0 +1,57 @@
+specificationVersion: "0.1"
+id: reservoir-plans-pricing
+name: Reservoir API Plans & Pricing
+description: Pricing plans for the Reservoir NFT API. Reservoir provided a free tier for getting started and paid plans for higher usage. The service was sunset on October 15, 2025.
+url: https://reservoir.tools/pricing
+created: "2026-06-12"
+modified: "2026-06-12"
+
+plans:
+  - name: Free
+    description: Entry-level API access for developers building on Reservoir. Requires creating a free account on the Developer Dashboard to obtain an API key. Suitable for prototyping and low-volume applications.
+    url: https://dashboard.reservoir.tools/
+    price: 0
+    currency: USD
+    per: month
+    features:
+      - description: Free Reservoir API key via Developer Dashboard
+      - description: Access to NFT data, orders, and trading endpoints
+      - description: Support for 30+ EVM chains
+      - description: ReservoirKit React UI components
+      - description: Reservoir TypeScript SDK
+      - description: Community support
+
+  - name: Growth
+    description: Paid tier for production applications requiring higher throughput and priority support. Intended for teams and growing NFT applications needing increased rate limits and dedicated assistance.
+    url: https://reservoir.tools/pricing
+    price: null
+    currency: USD
+    per: month
+    priceNote: Contact Reservoir sales for pricing
+    features:
+      - description: Higher rate limits than free tier
+      - description: Priority support
+      - description: Advanced analytics
+      - description: Cross-marketplace order posting
+      - description: Custom chain support options
+
+  - name: Enterprise
+    description: Custom pricing and SLAs for large-scale NFT infrastructure needs. Used by major clients such as Coinbase, MetaMask, and Magic Eden for production marketplace infrastructure.
+    url: https://reservoir.tools/pricing
+    price: null
+    currency: USD
+    per: month
+    priceNote: Custom pricing — contact sales
+    features:
+      - description: Custom rate limits and throughput
+      - description: Dedicated support and SLAs
+      - description: Custom integrations
+      - description: White-label marketplace toolkit
+      - description: NFT liquidity router access
+      - description: Global NFT orderbook access
+      - description: Seaport deployment support
+
+notes: >
+  Reservoir, operated by Uneven Labs, raised $14M in Series A funding from Union Square Ventures.
+  The Reservoir NFT API and all associated services were sunset on October 15, 2025.
+  API keys were chain-specific and not universal across all available chains.
