@@ -1,19 +1,15 @@
 {
-  "name": "Reservoir Blog",
-  "description": "Blog for Reservoir Protocol \u2014 NFT marketplace infrastructure and data API. Note: Reservoir service was sunset on October 15, 2025; the blog domain reservoir.dev is no longer reachable.",
-  "url": "https://reservoir.dev/blog",
-  "rss": null,
-  "rssConfirmed": false,
-  "rssNote": "reservoir.dev is unreachable as of 2026-06-12 \u2014 service was sunset October 15, 2025. No RSS feed could be confirmed.",
-  "lastChecked": "2026-06-12",
-  "posts": [],
   "repo": "reservoir",
+  "name": "Reservoir Blog",
+  "description": "Blog for Reservoir Protocol — NFT marketplace infrastructure and data API. Note: Reservoir service was sunset on October 15, 2025; the blog domain reservoir.dev is no longer reachable.",
+  "url": "https://reservoir.dev/blog",
   "feeds": [
     {
-      "source": "https://www.linkedin.com/company/uneven-labs",
-      "error": "HTTPError"
+      "source": "https://reservoir.dev/blog",
+      "saved": 0,
+      "error": "ECONNREFUSED - domain sunset/unreachable"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T13:05:39Z",
+  "post_count": 0
 }
