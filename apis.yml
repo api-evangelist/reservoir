@@ -43,6 +43,8 @@ apis:
         url: https://nft.reservoir.tools/reference/dashboard-sign-up
 
 common:
+  - type: DomainSecurity
+    url: security/reservoir-domain-security.yml
   - type: Website
     url: https://reservoir.dev/
   - type: Documentation

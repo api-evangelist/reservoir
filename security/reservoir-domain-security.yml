@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: reservoir.dev
+  https: false
+- host: api.reservoir.tools
+  https: false
+domains:
+- domain: reservoir.dev
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false
+- domain: reservoir.tools
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
