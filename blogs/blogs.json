@@ -1,15 +1,14 @@
 {
   "repo": "reservoir",
   "name": "Reservoir Blog",
-  "description": "Blog for Reservoir Protocol — NFT marketplace infrastructure and data API. Note: Reservoir service was sunset on October 15, 2025; the blog domain reservoir.dev is no longer reachable.",
+  "description": "Blog for Reservoir Protocol \u2014 NFT marketplace infrastructure and data API. Note: Reservoir service was sunset on October 15, 2025; the blog domain reservoir.dev is no longer reachable.",
   "url": "https://reservoir.dev/blog",
   "feeds": [
     {
-      "source": "https://reservoir.dev/blog",
-      "saved": 0,
-      "error": "ECONNREFUSED - domain sunset/unreachable"
+      "source": "https://www.linkedin.com/company/uneven-labs",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-06-27T13:05:39Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 0
 }
