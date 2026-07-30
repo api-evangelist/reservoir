@@ -2,7 +2,19 @@ aid: reservoir
 name: Reservoir
 description: NFT marketplace infrastructure and data API for aggregating listings, bids, and sales across OpenSea, Blur, and other markets — powers buying, selling, and analytics across 30+ EVM chains. Reservoir provided a complete suite of APIs, SDKs, and UI kits abstracting the complexity of interacting with the NFT market. The service was sunset on October 15, 2025.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/reservoir.png
 url: https://raw.githubusercontent.com/api-evangelist/reservoir/refs/heads/main/apis.yml
 created: "2026-06-12"
 modified: "2026-06-12"
