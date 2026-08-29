@@ -2,6 +2,17 @@ aid: reservoir
 name: Reservoir
 description: NFT marketplace infrastructure and data API for aggregating listings, bids, and sales across OpenSea, Blur, and other markets — powers buying, selling, and analytics across 30+ EVM chains. Reservoir provided a complete suite of APIs, SDKs, and UI kits abstracting the complexity of interacting with the NFT market. The service was sunset on October 15, 2025.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
