@@ -60,3 +60,28 @@ notes: >
   Reservoir, operated by Uneven Labs, raised $14M in Series A funding from Union Square Ventures.
   The Reservoir NFT API and all associated services were sunset on October 15, 2025.
   API keys were chain-specific and not universal across all available chains.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units: []
+  plans:
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Growth
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
