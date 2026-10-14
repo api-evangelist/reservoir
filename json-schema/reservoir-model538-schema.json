@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/reservoir/main/json-schema/reservoir-model538-schema.json",
+  "title": "Model538",
+  "x-generated": "2026-10-14",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/reservoir-api-openapi.yml#/components/schemas/Model538",
+  "type": "object",
+  "properties": {
+    "maker": {
+      "type": "string",
+      "description": "Address of wallet making the order. Example: `0xF296178d553C8Ec21A2fBD2c5dDa8CA9ac905A00`",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "source": {
+      "type": "string",
+      "description": "Domain of your app that is creating the order, e.g. `myapp.xyz`. This is used for filtering, and to attribute the \"order source\" of sales in on-chain analytics, to help your app get discovered. Lean more <a href='https://docs.reservoir.tools/docs/calldata-attribution'>here</a>",
+      "pattern": "^[a-zA-Z0-9.-]+\\.[a-zA-Z0-9]{2,}$|localhost",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "blurAuth": {
+      "type": "string",
+      "description": "Advanced use case to pass personal blurAuthToken; the API will generate one if left empty."
+    },
+    "params": {
+      "$ref": "#/$defs/Model537"
+    }
+  },
+  "required": [
+    "maker"
+  ],
+  "$defs": {
+    "Model535": {
+      "type": "array",
+      "description": "Deprecated, use `marketplaceFees` and/or `customRoyalties`",
+      "items": {
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]{40}:[0-9]+$"
+      }
+    },
+    "Model536": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "Bid on a particular token. Example: `0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:123`",
+          "pattern": "^0x[a-fA-F0-9]{40}:[0-9]+$",
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "tokenSetId": {
+          "type": "string",
+          "description": "Bid on a particular token set. Cannot be used with cross-posting to OpenSea. Example: `token:CONTRACT:TOKEN_ID` representing a single token within contract, `contract:CONTRACT` representing a whole contract, `range:CONTRACT:START_TOKEN_ID:END_TOKEN_ID` representing a continuous token id range within a contract and `list:CONTRACT:TOKEN_IDS_HASH` representing a list of token ids within a contract."
+        },
+        "collection": {
+          "type": "string",
+          "description": "Bid on a particular collection with collection-id. Example: `0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`",
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "attributeKey": {
+          "type": "string",
+          "description": "Bid on a particular attribute key. This is case sensitive. Example: `Composition`"
+        },
+        "attributeValue": {
+          "type": "string",
+          "description": "Bid on a particular attribute value. This is case sensitive. Example: `Teddy (#33)`"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Quantity of tokens to bid on."
+        },
+        "weiPrice": {
+          "type": "string",
+          "description": "Amount bidder is willing to offer in the smallest denomination for the specific currency. Example: `1000000000000000000`",
+          "pattern": "^-?[0-9]+$"
+        },
+        "orderKind": {
+          "type": "string",
+          "description": "Exchange protocol used to create order. Example: `seaport-v1.5`",
+          "default": "seaport-v1.5",
+          "enum": [
+            "blur",
+            "zeroex-v4",
+            "seaport",
+            "seaport-v1.4",
+            "seaport-v1.5",
+            "seaport-v1.6",
+            "looks-rare",
+            "looks-rare-v2",
+            "x2y2",
+            "alienswap",
+            "payment-processor",
+            "payment-processor-v2",
+            "payment-processor-v2.1",
+            "mintify"
+          ]
+        },
+        "options": {
+          "$ref": "#/$defs/options"
+        },
+        "orderbook": {
+          "type": "string",
+          "description": "Orderbook where order is placed. Example: `Reservoir`",
+          "default": "reservoir",
+          "enum": [
+            "blur",
+            "reservoir",
+            "opensea",
+            "looks-rare",
+            "x2y2"
+          ]
+        },
+        "orderbookApiKey": {
+          "type": "string",
+          "description": "Optional API key for the target orderbook"
+        },
+        "automatedRoyalties": {
+          "type": "boolean",
+          "description": "If true, royalty amounts and recipients will be set automatically.",
+          "default": true
+        },
+        "royaltyBps": {
+          "type": "number",
+          "description": "Set a maximum amount of royalties to pay, rather than the full amount. Only relevant when using automated royalties. 1 BPS = 0.01% Note: OpenSea does not support values below 50 bps."
+        },
+        "fees": {
+          "$ref": "#/$defs/Model535"
+        },
+        "marketplaceFees": {
+          "$ref": "#/$defs/marketplaceFees"
+        },
+        "marketplaceFlatFees": {
+          "$ref": "#/$defs/marketplaceFlatFees"
+        },
+        "customRoyalties": {
+          "$ref": "#/$defs/customRoyalties"
+        },
+        "excludeFlaggedTokens": {
+          "type": "boolean",
+          "description": "If true flagged tokens will be excluded",
+          "default": false
+        },
+        "listingTime": {
+          "type": "string",
+          "description": "Unix timestamp (seconds) indicating when listing will be listed. Example: `1656080318`",
+          "pattern": "^[0-9]{10}$"
+        },
+        "expirationTime": {
+          "type": "string",
+          "description": "Unix timestamp (seconds) indicating when listing will expire. Example: `1656080318`",
+          "pattern": "^[0-9]{10}$"
+        },
+        "salt": {
+          "type": "string",
+          "description": "Optional. Random string to make the order unique",
+          "pattern": "^-?[0-9]+$"
+        },
+        "nonce": {
+          "type": "string",
+          "description": "Optional. Set a custom nonce",
+          "pattern": "^-?[0-9]+$"
+        },
+        "currency": {
+          "type": "string",
+          "default": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "pattern": "^0x[a-fA-F0-9]{40}$",
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "usePermit": {
+          "type": "boolean",
+          "description": "When true, will use permit to avoid approvals."
+        },
+        "checkMakerOutstandingBalance": {
+          "type": "boolean",
+          "description": "Check if the maker has enough balance to cover all open bid orders (of the current token / collection / attribute type)"
+        }
+      },
+      "required": [
+        "weiPrice"
+      ]
+    },
+    "Model537": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/Model536"
+      }
+    },
+    "customRoyalties": {
+      "type": "array",
+      "description": "List of custom royalties (formatted as `feeRecipient:feeBps`) to be bundled within the order. 1 BPS = 0.01% Example: `0xF296178d553C8Ec21A2fBD2c5dDa8CA9ac905A00:100`",
+      "items": {
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]{40}:[0-9]+$"
+      }
+    },
+    "marketplaceFees": {
+      "type": "array",
+      "description": "List of marketplace fees (formatted as `feeRecipient:feeBps`) to be bundled within the order. 1 BPS = 0.01% Example: `0xF296178d553C8Ec21A2fBD2c5dDa8CA9ac905A00:100`",
+      "items": {
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]{40}:[0-9]+$"
+      }
+    },
+    "marketplaceFlatFees": {
+      "type": "array",
+      "description": "List of marketplace flat fees (formatted as `feeRecipient:weiAmount`) to be bundled within the order.",
+      "items": {
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]{40}:[0-9]+$"
+      }
+    },
+    "options": {
+      "type": "object",
+      "description": "Additional options.",
+      "properties": {
+        "seaport-v1.4": {
+          "$ref": "#/$defs/seaport-v1.4"
+        },
+        "seaport-v1.5": {
+          "$ref": "#/$defs/seaport-v1.4"
+        },
+        "seaport-v1.6": {
+          "$ref": "#/$defs/seaport-v1.4"
+        },
+        "mintify": {
+          "$ref": "#/$defs/seaport-v1.4"
+        },
+        "payment-processor-v2": {
+          "$ref": "#/$defs/payment-processor-v2"
+        },
+        "payment-processor-v2.1": {
+          "$ref": "#/$defs/payment-processor-v2"
+        }
+      }
+    },
+    "payment-processor-v2": {
+      "type": "object",
+      "properties": {
+        "useOffChainCancellation": {
+          "type": "boolean"
+        },
+        "cosigner": {
+          "type": "string",
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "replaceOrderId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "useOffChainCancellation"
+      ]
+    },
+    "seaport-v1.4": {
+      "type": "object",
+      "properties": {
+        "conduitKey": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{64}$"
+        },
+        "useOffChainCancellation": {
+          "type": "boolean"
+        },
+        "replaceOrderId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "useOffChainCancellation"
+      ]
+    }
+  }
+}

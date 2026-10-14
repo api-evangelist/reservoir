@@ -1,0 +1,16 @@
+generated: '2026-10-14'
+method: none
+source:
+- https://zapier.com/apps/reservoir/integrations
+- https://n8n.io/integrations/reservoir/
+- https://composio.dev/toolkits/reservoir
+- https://monid.ai/tools/reservoir
+checked:
+- https://composio.dev/toolkits/reservoir
+- https://monid.ai/tools/reservoir
+- https://n8n.io/integrations/reservoir/
+- https://zapier.com/apps/reservoir/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

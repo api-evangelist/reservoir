@@ -1,0 +1,92 @@
+generated: '2026-10-14'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 8
+  own: 1
+  other_domain: 4
+  platform: 3
+  roles:
+  - api
+  - docs
+  - marketing
+  - other
+  - status
+  - website
+hosts:
+- host: api.reservoir.tools
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: reservoir.tools
+  role: api
+  relation: other-domain
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHub
+  serves: []
+  registrable_domain: github.com
+  role: other
+  relation: platform
+- host: nft.reservoir.tools
+  found_by:
+  - pointer
+  types:
+  - Documentation
+  serves: []
+  registrable_domain: reservoir.tools
+  role: docs
+  relation: other-domain
+- host: reservoir.dev
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - Website
+  - Blog
+  serves:
+  - docs
+  registrable_domain: reservoir.dev
+  role: website
+  relation: own
+- host: reservoir.tools
+  found_by:
+  - pointer
+  types:
+  - Pricing
+  serves: []
+  registrable_domain: reservoir.tools
+  role: marketing
+  relation: other-domain
+- host: status.reservoir.tools
+  found_by:
+  - pointer
+  types:
+  - StatusPage
+  serves: []
+  registrable_domain: reservoir.tools
+  role: status
+  relation: other-domain
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: x.com
+  found_by:
+  - pointer
+  types:
+  - X
+  serves: []
+  registrable_domain: x.com
+  role: other
+  relation: platform

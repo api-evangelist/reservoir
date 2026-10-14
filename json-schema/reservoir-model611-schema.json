@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/reservoir/main/json-schema/reservoir-model611-schema.json",
+  "title": "Model611",
+  "x-generated": "2026-10-14",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/reservoir-api-openapi.yml#/components/schemas/Model611",
+  "type": "object",
+  "properties": {
+    "items": {
+      "$ref": "#/$defs/Model609"
+    },
+    "taker": {
+      "type": "string",
+      "description": "Address of wallet minting (receiver of the NFT).",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "relayer": {
+      "type": "string",
+      "description": "Address of wallet relaying the mint transaction(s) (paying for the NFT).",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "onlyPath": {
+      "type": "boolean",
+      "description": "If true, only the path will be returned.",
+      "default": false
+    },
+    "currencyChainId": {
+      "type": "number",
+      "description": "The chain id of the purchase currency."
+    },
+    "source": {
+      "type": "string",
+      "description": "Filling source used for attribution. Example: `reservoir.market`",
+      "pattern": "^[a-zA-Z0-9.-]+\\.[a-zA-Z0-9]{2,}$|localhost",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "feesOnTop": {
+      "$ref": "#/$defs/Model610"
+    },
+    "partial": {
+      "type": "boolean",
+      "description": "If true, any off-chain or on-chain errors will be skipped.",
+      "default": false
+    },
+    "skipBalanceCheck": {
+      "type": "boolean",
+      "description": "If true, balance checks will be skipped.",
+      "default": false
+    },
+    "referrer": {
+      "type": "string",
+      "description": "Referrer address (where supported).",
+      "pattern": "^0x[a-fA-F0-9]{40}$"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Mint comment (where suported)."
+    }
+  },
+  "required": [
+    "items",
+    "taker"
+  ],
+  "$defs": {
+    "Model605": {
+      "type": "object",
+      "properties": {
+        "abiType": {
+          "type": "string"
+        },
+        "abiValue": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "abiType",
+        "abiValue"
+      ]
+    },
+    "Model606": {
+      "type": "array",
+      "description": "Parameters to be passed into the mint method, each parameter is made up of a type and a value.",
+      "items": {
+        "$ref": "#/$defs/Model605"
+      }
+    },
+    "Model607": {
+      "type": "object",
+      "properties": {
+        "signature": {
+          "type": "string",
+          "description": "Signature of the mint function, computed as keccak256. For example: keccak256('mintWithRewards(address,uint256,uint256,bytes,address)'))",
+          "pattern": "^0x[a-fA-F0-9]*$"
+        },
+        "params": {
+          "$ref": "#/$defs/Model606"
+        }
+      },
+      "required": [
+        "signature"
+      ]
+    },
+    "Model608": {
+      "type": "object",
+      "properties": {
+        "collection": {
+          "type": "string",
+          "description": "Collection to mint.",
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "token": {
+          "type": "string",
+          "description": "Token to mint.",
+          "pattern": "^0x[a-fA-F0-9]{40}:[0-9]+$",
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "custom": {
+          "$ref": "#/$defs/custom"
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Quantity of tokens to mint.",
+          "x-constraint": {
+            "sign": "positive"
+          }
+        },
+        "preferredMintStage": {
+          "type": "string",
+          "description": "Optionally specify a stage to mint"
+        }
+      }
+    },
+    "Model609": {
+      "type": "array",
+      "description": "List of items to mint.",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/Model608"
+      }
+    },
+    "Model610": {
+      "type": "array",
+      "description": "List of fees (formatted as `feeRecipient:feeAmount`) to be taken when minting.\nUnless overridden via the `currency` param, the currency used for any fees on top matches the buy-in currency detected by the backend.\nExample: `0xF296178d553C8Ec21A2fBD2c5dDa8CA9ac905A00:1000000000000000`",
+      "items": {
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]{40}:[0-9]+$"
+      }
+    },
+    "custom": {
+      "type": "object",
+      "description": "Optional custom details to use for minting.",
+      "properties": {
+        "contract": {
+          "type": "string",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        },
+        "price": {
+          "type": "string",
+          "pattern": "^-?[0-9]+$"
+        },
+        "details": {
+          "$ref": "#/$defs/details"
+        }
+      },
+      "required": [
+        "contract",
+        "price",
+        "details"
+      ]
+    },
+    "details": {
+      "type": "object",
+      "properties": {
+        "tx": {
+          "$ref": "#/$defs/tx"
+        }
+      }
+    },
+    "tx": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "string",
+          "description": "Contract where to send the mint transaction",
+          "pattern": "^0x[a-fA-F0-9]{40}$"
+        },
+        "data": {
+          "$ref": "#/$defs/Model607"
+        }
+      },
+      "required": [
+        "to"
+      ]
+    }
+  }
+}

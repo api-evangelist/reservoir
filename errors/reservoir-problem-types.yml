@@ -1,0 +1,20 @@
+generated: '2026-10-14'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/reservoir-api-openapi.yml
+format: custom
+envelope:
+  media_type: '*/*'
+  schema: null
+coverage:
+  operations: 93
+  statuses_declared: 1
+problems:
+- status: default
+  title: null
+  description: Successful
+  operations: 6
+  media_types:
+  - '*/*'
+  schema: null

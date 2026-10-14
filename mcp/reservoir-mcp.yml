@@ -1,0 +1,213 @@
+generated: '2026-10-14'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/reservoir-api-openapi.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: derived
+note: No MCP server was found. No probe result in the dossier. Candidate tools below are derived from the 93 operation(s) in the provider's own
+  OpenAPI (40 listed); they describe what a server WOULD expose, not one that exists.
+tools:
+- name: get_apikeys_key_ratelimits
+  operationId: getApikeysKeyRatelimits
+  method: GET
+  path: /api-keys/{key}/rate-limits
+  description: Get rate limits for the given API key
+- name: get_chain_stats_v1
+  operationId: getChainStatsV1
+  method: GET
+  path: /chain/stats/v1
+  description: Chain Stats
+- name: post_collectionssets_v1
+  operationId: postCollectionssetsV1
+  method: POST
+  path: /collections-sets/v1
+  description: Create collection set
+- name: get_collectionssets_collectionssetid_ownersdistribution_v1
+  operationId: getCollectionssetsCollectionssetidOwnersdistributionV1
+  method: GET
+  path: /collections-sets/{collectionsSetId}/owners-distribution/v1
+  description: Owners Collection Set Distribution
+- name: get_collections_activity_v6
+  operationId: getCollectionsActivityV6
+  method: GET
+  path: /collections/activity/v6
+  description: Collection activity
+- name: get_collections_dailyvolumes_v1
+  operationId: getCollectionsDailyvolumesV1
+  method: GET
+  path: /collections/daily-volumes/v1
+  description: Daily collection volume
+- name: post_collections_disablemetadata_v1
+  operationId: postCollectionsDisablemetadataV1
+  method: POST
+  path: /collections/disable-metadata/v1
+  description: Disable or reenable metadata for a collection
+- name: post_collections_nsfwstatus_v1
+  operationId: postCollectionsNsfwstatusV1
+  method: POST
+  path: /collections/nsfw-status/v1
+  description: Update collections nsfw status
+- name: post_collections_refresh_v2
+  operationId: postCollectionsRefreshV2
+  method: POST
+  path: /collections/refresh/v2
+  description: Refresh Collection
+- name: get_collections_search_v1
+  operationId: getCollectionsSearchV1
+  method: GET
+  path: /collections/search/v1
+  description: Search Collections (Cross Chain)
+- name: post_collections_spamstatus_v1
+  operationId: postCollectionsSpamstatusV1
+  method: POST
+  path: /collections/spam-status/v1
+  description: Update collections spam status
+- name: get_collections_trendingmints_v1
+  operationId: getCollectionsTrendingmintsV1
+  method: GET
+  path: /collections/trending-mints/v1
+  description: Top Trending Mints
+- name: get_collections_trendingmints_v2
+  operationId: getCollectionsTrendingmintsV2
+  method: GET
+  path: /collections/trending-mints/v2
+  description: Top Trending Mints
+- name: get_collections_trending_v1
+  operationId: getCollectionsTrendingV1
+  method: GET
+  path: /collections/trending/v1
+  description: Top Trending Collections
+- name: get_collections_v7
+  operationId: getCollectionsV7
+  method: GET
+  path: /collections/v7
+  description: Collections
+- name: get_collections_collectionid_bids_v1
+  operationId: getCollectionsCollectionidBidsV1
+  method: GET
+  path: /collections/{collectionId}/bids/v1
+  description: Collection Bids (offers)
+- name: get_collections_collection_attributes_all_v4
+  operationId: getCollectionsCollectionAttributesAllV4
+  method: GET
+  path: /collections/{collection}/attributes/all/v4
+  description: All attributes
+- name: get_collections_collection_attributes_explore_v6
+  operationId: getCollectionsCollectionAttributesExploreV6
+  method: GET
+  path: /collections/{collection}/attributes/explore/v6
+  description: Explore attributes
+- name: get_collections_collection_marketplaceconfigurations_v2
+  operationId: getCollectionsCollectionMarketplaceconfigurationsV2
+  method: GET
+  path: /collections/{collection}/marketplace-configurations/v2
+  description: Marketplace configurations by collection
+- name: post_collections_collection_override_v1
+  operationId: postCollectionsCollectionOverrideV1
+  method: POST
+  path: /collections/{collection}/override/v1
+  description: Override collections
+- name: post_collections_collection_override_v2
+  operationId: postCollectionsCollectionOverrideV2
+  method: POST
+  path: /collections/{collection}/override/v2
+  description: Override collections
+- name: get_collections_collection_ownersdistribution_v1
+  operationId: getCollectionsCollectionOwnersdistributionV1
+  method: GET
+  path: /collections/{collection}/owners-distribution/v1
+  description: Owners Collection Distribution
+- name: get_collections_collection_toptraders_v1
+  operationId: getCollectionsCollectionToptradersV1
+  method: GET
+  path: /collections/{collection}/top-traders/v1
+  description: Top Traders
+- name: post_contractssets_v1
+  operationId: postContractssetsV1
+  method: POST
+  path: /contracts-sets/v1
+  description: Create contracts set
+- name: get_crosspostingorders_v1
+  operationId: getCrosspostingordersV1
+  method: GET
+  path: /cross-posting-orders/v1
+  description: Check Cross Posting Status
+- name: get_events_asks_v3
+  operationId: getEventsAsksV3
+  method: GET
+  path: /events/asks/v3
+  description: Asks status changes
+- name: get_events_bids_v3
+  operationId: getEventsBidsV3
+  method: GET
+  path: /events/bids/v3
+  description: Bid status changes
+- name: get_events_collections_floorask_v2
+  operationId: getEventsCollectionsFlooraskV2
+  method: GET
+  path: /events/collections/floor-ask/v2
+  description: Collection floor changes
+- name: get_events_collections_topbid_v2
+  operationId: getEventsCollectionsTopbidV2
+  method: GET
+  path: /events/collections/top-bid/v2
+  description: Collection top bid changes
+- name: get_events_tokens_floorask_v4
+  operationId: getEventsTokensFlooraskV4
+  method: GET
+  path: /events/tokens/floor-ask/v4
+  description: Token price changes
+- name: post_execute_authsignature_v1
+  operationId: postExecuteAuthsignatureV1
+  method: POST
+  path: /execute/auth-signature/v1
+  description: Attach a signature to an existing auth challenge
+- name: post_execute_bid_v5
+  operationId: postExecuteBidV5
+  method: POST
+  path: /execute/bid/v5
+  description: Create Bids
+- name: post_execute_buy_v7
+  operationId: postExecuteBuyV7
+  method: POST
+  path: /execute/buy/v7
+  description: Buy Tokens
+- name: post_execute_call_v1
+  operationId: postExecuteCallV1
+  method: POST
+  path: /execute/call/v1
+  description: Make arbitrary same-chain and cross-chain calls via solver
+- name: post_execute_cancelsignature_v1
+  operationId: postExecuteCancelsignatureV1
+  method: POST
+  path: /execute/cancel-signature/v1
+  description: Off-chain cancel orders
+- name: post_execute_cancel_v3
+  operationId: postExecuteCancelV3
+  method: POST
+  path: /execute/cancel/v3
+  description: Cancel Orders
+- name: post_execute_deposit_v1
+  operationId: postExecuteDepositV1
+  method: POST
+  path: /execute/deposit/v1
+  description: Deposit funds to the solver
+- name: post_execute_list_v5
+  operationId: postExecuteListV5
+  method: POST
+  path: /execute/list/v5
+  description: Create Listings
+- name: post_execute_mint_v1
+  operationId: postExecuteMintV1
+  method: POST
+  path: /execute/mint/v1
+  description: Mint Tokens
+- name: post_execute_permitsignature_v1
+  operationId: postExecutePermitsignatureV1
+  method: POST
+  path: /execute/permit-signature/v1
+  description: Attach a signature to an existing permit

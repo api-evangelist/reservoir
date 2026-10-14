@@ -1,0 +1,308 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/reservoir/main/json-schema/reservoir-model564-schema.json",
+  "title": "Model564",
+  "x-generated": "2026-10-14",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/reservoir-api-openapi.yml#/components/schemas/Model564",
+  "type": "object",
+  "properties": {
+    "items": {
+      "$ref": "#/$defs/Model563"
+    },
+    "taker": {
+      "type": "string",
+      "description": "Address of wallet filling (receiver of the NFT).",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "relayer": {
+      "type": "string",
+      "description": "Address of wallet relaying the fill transaction (paying for the NFT).",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "onlyPath": {
+      "type": "boolean",
+      "description": "If true, only the path will be returned.",
+      "default": false
+    },
+    "forceRouter": {
+      "type": "boolean",
+      "description": "If true, all fills will be executed through the router (where possible)"
+    },
+    "forwarderChannel": {
+      "type": "string",
+      "description": "If passed, all fills will be executed through the trusted trusted forwarder (where possible)",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency to be used for purchases.",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "currencyChainId": {
+      "type": "number",
+      "description": "The chain id of the purchase currency"
+    },
+    "normalizeRoyalties": {
+      "type": "boolean",
+      "description": "Charge any missing royalties.",
+      "default": false
+    },
+    "allowInactiveOrderIds": {
+      "type": "boolean",
+      "description": "If true, inactive orders will not be skipped over (only relevant when filling via a specific order id).",
+      "default": false
+    },
+    "source": {
+      "type": "string",
+      "description": "Filling source used for attribution. Example: `reservoir.market`",
+      "pattern": "^[a-zA-Z0-9.-]+\\.[a-zA-Z0-9]{2,}$|localhost",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "feesOnTop": {
+      "$ref": "#/$defs/Model554"
+    },
+    "partial": {
+      "type": "boolean",
+      "description": "If true, any off-chain or on-chain errors will be skipped.",
+      "default": false
+    },
+    "skipBalanceCheck": {
+      "type": "boolean",
+      "description": "If true, balance check will be skipped.",
+      "default": false
+    },
+    "excludeEOA": {
+      "type": "boolean",
+      "description": "Exclude orders that can only be filled by EOAs, to support filling with smart contracts. If marked `true`, blur will be excluded.",
+      "default": false
+    },
+    "maxFeePerGas": {
+      "type": "string",
+      "description": "Optional custom gas settings. Includes base fee & priority fee in this limit.",
+      "pattern": "^-?[0-9]+$"
+    },
+    "maxPriorityFeePerGas": {
+      "type": "string",
+      "description": "Optional custom gas settings.",
+      "pattern": "^-?[0-9]+$"
+    },
+    "usePermit": {
+      "type": "boolean",
+      "description": "When true, will use permit to avoid approvals."
+    },
+    "swapProvider": {
+      "type": "string",
+      "description": "Choose a specific swapping provider when buying in a different currency (defaults to `relay`)",
+      "default": "uniswap",
+      "enum": [
+        "uniswap",
+        "relay"
+      ]
+    },
+    "executionMethod": {
+      "type": "string",
+      "enum": [
+        "intent"
+      ]
+    },
+    "referrer": {
+      "type": "string",
+      "description": "Referrer address (where supported)",
+      "pattern": "^0x[a-fA-F0-9]{40}$"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Mint comment (where suported)"
+    },
+    "conduitKey": {
+      "type": "string",
+      "description": "Conduit key to use to fulfill the order",
+      "pattern": "^0x[a-fA-F0-9]{64}$",
+      "x-convert": {
+        "case": "lower"
+      }
+    },
+    "x2y2ApiKey": {
+      "type": "string",
+      "description": "Optional X2Y2 API key used for filling."
+    },
+    "openseaApiKey": {
+      "type": "string",
+      "description": "Optional OpenSea API key used for filling. You don't need to pass your own key, but if you don't, you are more likely to be rate-limited."
+    },
+    "blurAuth": {
+      "type": "string",
+      "description": "Advanced use case to pass personal blurAuthToken; the API will generate one if left empty."
+    }
+  },
+  "required": [
+    "items",
+    "taker"
+  ],
+  "$defs": {
+    "Model554": {
+      "type": "array",
+      "description": "List of fees (formatted as `feeRecipient:feeAmount`) to be taken when filling.\nUnless overridden via the `currency` param, the currency used for any fees on top matches the buy-in currency detected by the backend.\nExample: `0xF296178d553C8Ec21A2fBD2c5dDa8CA9ac905A00:1000000000000000`",
+      "items": {
+        "type": "string",
+        "pattern": "^0x[a-fA-F0-9]{40}:[0-9]+$"
+      }
+    },
+    "Model560": {
+      "type": "array",
+      "maxItems": 2,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9.-]+\\.[a-zA-Z0-9]{2,}$|localhost",
+        "x-convert": {
+          "case": "lower"
+        }
+      }
+    },
+    "Model561": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string",
+          "pattern": "^-?[0-9]+$"
+        }
+      },
+      "required": [
+        "orderId"
+      ]
+    },
+    "Model562": {
+      "type": "object",
+      "properties": {
+        "collection": {
+          "type": "string",
+          "description": "Collection to buy.",
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "token": {
+          "type": "string",
+          "description": "Token to buy.",
+          "pattern": "^0x[a-fA-F0-9]{40}:[0-9]+$",
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Quantity of tokens to buy.",
+          "x-constraint": {
+            "sign": "positive"
+          }
+        },
+        "orderId": {
+          "type": "string",
+          "description": "Optional order id to fill.",
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "rawOrder": {
+          "$ref": "#/$defs/rawOrder"
+        },
+        "fillType": {
+          "type": "string",
+          "description": "Specify preferred fillType. `preferMint`: First, tries to mint a new NFT if available; otherwise, it purchases from the secondary market. `trade`: Always buys from the secondary market, regardless of price. `mint`: Always mints a new NFT.",
+          "default": "preferMint",
+          "enum": [
+            "trade",
+            "mint",
+            "preferMint"
+          ]
+        },
+        "preferredMintStage": {
+          "type": "string",
+          "description": "Optionally specify a stage to mint"
+        },
+        "preferredOrderSource": {
+          "type": "string",
+          "description": "If there are multiple listings with equal best price, prefer this source over others.\nNOTE: if you want to fill a listing that is not the best priced, you need to pass a specific order id or use `exactOrderSource`.",
+          "pattern": "^[a-zA-Z0-9.-]+\\.[a-zA-Z0-9]{2,}$|localhost",
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "exactOrderSource": {
+          "$ref": "#/$defs/Model560"
+        },
+        "exclusions": {
+          "$ref": "#/$defs/exclusions"
+        }
+      }
+    },
+    "Model563": {
+      "type": "array",
+      "description": "List of items to buy.",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/Model562"
+      }
+    },
+    "exclusions": {
+      "type": "array",
+      "description": "Items to exclude",
+      "items": {
+        "$ref": "#/$defs/Model561"
+      }
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "rawOrder": {
+      "type": "object",
+      "description": "Optional raw order to fill.",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "opensea",
+            "blur-partial",
+            "looks-rare",
+            "zeroex-v4",
+            "seaport",
+            "seaport-v1.4",
+            "seaport-v1.5",
+            "seaport-v1.6",
+            "mintify",
+            "x2y2",
+            "rarible",
+            "sudoswap",
+            "nftx",
+            "alienswap",
+            "mint"
+          ],
+          "x-convert": {
+            "case": "lower"
+          }
+        },
+        "data": {
+          "$ref": "#/$defs/metadata"
+        }
+      }
+    }
+  }
+}
