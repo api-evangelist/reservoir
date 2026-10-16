@@ -5,6 +5,10 @@
   "url": "https://reservoir.dev/blog",
   "feeds": [
     {
+      "source": "https://reservoir.dev/blog",
+      "error": "URLError"
+    },
+    {
       "source": "https://www.linkedin.com/company/uneven-labs",
       "feed_url": "https://www.linkedin.com/company/uneven-labs",
       "title": "",
@@ -12,6 +16,6 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-10-03T12:30:02Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 0
 }
