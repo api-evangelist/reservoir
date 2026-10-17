@@ -1,0 +1,61 @@
+{
+  "provider": "reservoir",
+  "sources": [
+    "reservoir-api-openapi.yml"
+  ],
+  "outputs": [
+    "reservoir-accounts-api-openapi.yml",
+    "reservoir-activity-api-openapi.yml",
+    "reservoir-attributes-api-openapi.yml",
+    "reservoir-chain-api-openapi.yml",
+    "reservoir-collections-api-openapi.yml",
+    "reservoir-events-api-openapi.yml",
+    "reservoir-manage-orders-api-openapi.yml",
+    "reservoir-management-api-openapi.yml",
+    "reservoir-misc-api-openapi.yml",
+    "reservoir-orders-api-openapi.yml",
+    "reservoir-owners-api-openapi.yml",
+    "reservoir-redirects-api-openapi.yml",
+    "reservoir-sales-api-openapi.yml",
+    "reservoir-sources-api-openapi.yml",
+    "reservoir-stats-api-openapi.yml",
+    "reservoir-tokens-api-openapi.yml",
+    "reservoir-transfers-api-openapi.yml",
+    "reservoir-marketplace-api-openapi.yml",
+    "reservoir-x-deprecated-api-openapi.yml"
+  ],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
+  "errors": [],
+  "warnings": [
+    "reservoir-api-openapi.yml: previously refined output kept for 93 operation(s) no archived document covers (e.g. /api-keys/{key}/rate-limits get, /chain/stats/v1 get, /collections-sets/v1 post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "reservoir-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "reservoir-api-openapi.yml: declared missing tag: Accounts",
+    "reservoir-api-openapi.yml: declared missing tag: Activity",
+    "reservoir-api-openapi.yml: declared missing tag: Attributes",
+    "reservoir-api-openapi.yml: declared missing tag: Chain",
+    "reservoir-api-openapi.yml: declared missing tag: Collections",
+    "reservoir-api-openapi.yml: declared missing tag: Events",
+    "reservoir-api-openapi.yml: declared missing tag: Manage Orders",
+    "reservoir-api-openapi.yml: declared missing tag: Management",
+    "reservoir-api-openapi.yml: declared missing tag: Misc",
+    "reservoir-api-openapi.yml: declared missing tag: Orders",
+    "reservoir-api-openapi.yml: declared missing tag: Owners",
+    "reservoir-api-openapi.yml: declared missing tag: Redirects",
+    "reservoir-api-openapi.yml: declared missing tag: Sales",
+    "reservoir-api-openapi.yml: declared missing tag: Sources",
+    "reservoir-api-openapi.yml: declared missing tag: Stats",
+    "reservoir-api-openapi.yml: declared missing tag: Tokens",
+    "reservoir-api-openapi.yml: declared missing tag: Transfers",
+    "reservoir-api-openapi.yml: declared missing tag: marketplace",
+    "reservoir-api-openapi.yml: declared missing tag: x-deprecated",
+    "reservoir-api-openapi.yml: multi-axis tagging (19 tags, 19 first tags, 1.72x duplication over 93 operations) \u2014 split on first tag, 66 operations narrowed",
+    "superseded outputs removed: reservoir-api-openapi.yml",
+    "apis.yml register: written (+19 apis, 19 total)"
+  ],
+  "skipped": []
+}

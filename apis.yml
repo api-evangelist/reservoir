@@ -107,16 +107,16 @@ common:
   url: finops/reservoir-finops.yml
 
 apis:
-- aid: reservoir:reservoir-api
-  name: Reservoir Reservoir API
-  description: The Reservoir API from Reservoir — 93 operation(s) for reservoir.
+- aid: reservoir:reservoir-accounts-api
+  name: Reservoir Accounts API
+  description: The Accounts API from Reservoir — 5 operation(s) for accounts.
   humanURL: https://reservoir.dev/
   baseURL: https://api.reservoir.tools
   tags:
-  - Reservoir
+  - Accounts
   properties:
   - type: OpenAPI
-    url: openapi/reservoir-api-openapi.yml
+    url: openapi/reservoir-accounts-api-openapi.yml
   - type: Documentation
     url: https://nft.reservoir.tools/reference/overview
   - type: GettingStarted
@@ -135,7 +135,510 @@ apis:
     url: json-schema/reservoir-model600-schema.json
   - type: JSONSchema
     url: json-schema/reservoir-model584-schema.json
-
+- aid: reservoir:reservoir-activity-api
+  name: Reservoir Activity API
+  description: The Activity API from Reservoir — 3 operation(s) for activity.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Activity
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-activity-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-attributes-api
+  name: Reservoir Attributes API
+  description: The Attributes API from Reservoir — 2 operation(s) for attributes.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Attributes
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-attributes-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-chain-api
+  name: Reservoir Chain API
+  description: The Chain API from Reservoir — 1 operation(s) for chain.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Chain
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-chain-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-collections-api
+  name: Reservoir Collections API
+  description: The Collections API from Reservoir — 10 operation(s) for collections.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-collections-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-events-api
+  name: Reservoir Events API
+  description: The Events API from Reservoir — 3 operation(s) for events.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-events-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-manage-orders-api
+  name: Reservoir Manage Orders API
+  description: The Manage Orders API from Reservoir — 3 operation(s) for manage orders.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Manage Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-manage-orders-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-management-api
+  name: Reservoir Management API
+  description: The Management API from Reservoir — 15 operation(s) for management.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Management
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-management-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-marketplace-api
+  name: Reservoir Marketplace API
+  description: The marketplace API from Reservoir — 7 operation(s) for marketplace.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - marketplace
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-marketplace-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-misc-api
+  name: Reservoir Misc API
+  description: The Misc API from Reservoir — 9 operation(s) for misc.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Misc
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-misc-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-orders-api
+  name: Reservoir Orders API
+  description: The Orders API from Reservoir — 3 operation(s) for orders.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-orders-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-owners-api
+  name: Reservoir Owners API
+  description: The Owners API from Reservoir — 5 operation(s) for owners.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Owners
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-owners-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-redirects-api
+  name: Reservoir Redirects API
+  description: The Redirects API from Reservoir — 5 operation(s) for redirects.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Redirects
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-redirects-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-sales-api
+  name: Reservoir Sales API
+  description: The Sales API from Reservoir — 1 operation(s) for sales.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Sales
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-sales-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-sources-api
+  name: Reservoir Sources API
+  description: The Sources API from Reservoir — 1 operation(s) for sources.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-sources-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-stats-api
+  name: Reservoir Stats API
+  description: The Stats API from Reservoir — 2 operation(s) for stats.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-stats-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-tokens-api
+  name: Reservoir Tokens API
+  description: The Tokens API from Reservoir — 9 operation(s) for tokens.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-transfers-api
+  name: Reservoir Transfers API
+  description: The Transfers API from Reservoir — 1 operation(s) for transfers.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - Transfers
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-transfers-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
+- aid: reservoir:reservoir-x-deprecated-api
+  name: Reservoir X Deprecated API
+  description: The x-deprecated API from Reservoir — 8 operation(s) for x-deprecated.
+  humanURL: https://reservoir.dev/
+  baseURL: https://api.reservoir.tools
+  tags:
+  - x-deprecated
+  properties:
+  - type: OpenAPI
+    url: openapi/reservoir-x-deprecated-api-openapi.yml
+  - type: Documentation
+    url: https://nft.reservoir.tools/reference/overview
+  - type: GettingStarted
+    url: https://nft.reservoir.tools/reference/getting-started
+  - type: Authentication
+    url: https://nft.reservoir.tools/reference/dashboard-sign-up
+  - type: JSONSchema
+    url: json-schema/reservoir-model564-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model624-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model611-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model538-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model600-schema.json
+  - type: JSONSchema
+    url: json-schema/reservoir-model584-schema.json
 x-readme-harvest:
   date: '2026-10-14'
   ops: 93

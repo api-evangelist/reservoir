@@ -1,0 +1,2484 @@
+openapi: 3.2.0
+info:
+  title: Reservoir Accounts API
+  version: 5.296.1
+  description: You are viewing the reference docs for the Reservoir API. For a more complete overview with guides and examples, check out the Reservoir Protocol Docs.
+servers:
+- url: https://api.reservoir.tools
+  description: Ethereum
+- url: https://api-polygon.reservoir.tools
+  description: Polygon
+- url: https://api-base.reservoir.tools
+  description: Base
+- url: https://api-abstract.reservoir.tools
+  description: Abstract
+- url: https://api-abstract-testnet.reservoir.tools
+  description: Abstract Testnet
+- url: https://api-ancient8.reservoir.tools
+  description: Ancient8
+- url: https://api-ancient8-testnet.reservoir.tools
+  description: Ancient8 Testnet
+- url: https://api-anime-testnet.reservoir.tools
+  description: Anime Testnet
+- url: https://api-apechain.reservoir.tools
+  description: Apechain
+- url: https://api-apex.reservoir.tools
+  description: Apex
+- url: https://api-apex-testnet.reservoir.tools
+  description: Apex Testnet
+- url: https://api-arbitrum.reservoir.tools
+  description: Arbitrum
+- url: https://api-arbitrum-nova.reservoir.tools
+  description: Arbitrum Nova
+- url: https://api-astar-zkevm.reservoir.tools
+  description: Astar zkEVM
+- url: https://api-avalanche.reservoir.tools
+  description: Avalanche
+- url: https://api-amoy.reservoir.tools
+  description: Amoy
+- url: https://api-base-sepolia.reservoir.tools
+  description: Base Sepolia
+- url: https://api-berachain.reservoir.tools
+  description: Berachain
+- url: https://api-berachain-testnet.reservoir.tools
+  description: Berachain Testnet
+- url: https://api-b3.reservoir.tools
+  description: B3
+- url: https://api-b3-testnet.reservoir.tools
+  description: B3 Testnet
+- url: https://api-bitlayer.reservoir.tools
+  description: Bitlayer
+- url: https://api-blast.reservoir.tools
+  description: Blast
+- url: https://api-blast-sepolia.reservoir.tools
+  description: Blast Sepolia
+- url: https://api-boss.reservoir.tools
+  description: Boss
+- url: https://api-bsc.reservoir.tools
+  description: Binance Smart Chain
+- url: https://api-cloud.reservoir.tools
+  description: Cloud
+- url: https://api-creator-testnet.reservoir.tools
+  description: Creator Testnet
+- url: https://api-curtis.reservoir.tools
+  description: Curtis
+- url: https://api-cyber.reservoir.tools
+  description: Cyber
+- url: https://api-degen.reservoir.tools
+  description: Degen
+- url: https://api-flow.reservoir.tools
+  description: Flow
+- url: https://api-forma.reservoir.tools
+  description: Forma
+- url: https://api-forma-sketchpad.reservoir.tools
+  description: Forma Sketchpad
+- url: https://api-frame-testnet.reservoir.tools
+  description: Frame Testnet
+- url: https://api-game7.reservoir.tools
+  description: Game7
+- url: https://api-game7-testnet.reservoir.tools
+  description: Game7 Testnet
+- url: https://api-hychain.reservoir.tools
+  description: Hychain
+- url: https://api-hychain-testnet.reservoir.tools
+  description: Hychain Testnet
+- url: https://api-ink.reservoir.tools
+  description: Ink
+- url: https://api-linea.reservoir.tools
+  description: Linea
+- url: https://api-minato.reservoir.tools
+  description: Minato
+- url: https://api-monad-testnet.reservoir.tools
+  description: Monad Testnet
+- url: https://api-nebula.reservoir.tools
+  description: Nebula
+- url: https://api-opbnb.reservoir.tools
+  description: OPBNB
+- url: https://api-optimism.reservoir.tools
+  description: Optimism
+- url: https://api-polygon-zkevm.reservoir.tools
+  description: Polygon zkEVM
+- url: https://api-redstone.reservoir.tools
+  description: Redstone
+- url: https://api-scroll.reservoir.tools
+  description: Scroll
+- url: https://api-sei.reservoir.tools
+  description: Sei
+- url: https://api-sei-testnet.reservoir.tools
+  description: Sei Testnet
+- url: https://api-sepolia.reservoir.tools
+  description: Sepolia
+- url: https://api-shape.reservoir.tools
+  description: Shape
+- url: https://api-shape-sepolia.reservoir.tools
+  description: Shape Sepolia
+- url: https://api-soneium.reservoir.tools
+  description: Soneium
+- url: https://api-story-odyssey.reservoir.tools
+  description: Story Odyssey
+- url: https://api-xai.reservoir.tools
+  description: Xai
+- url: https://api-zero.reservoir.tools
+  description: Zero
+- url: https://api-zero-testnet.reservoir.tools
+  description: Zero Testnet
+- url: https://api-zksync.reservoir.tools
+  description: zkSync
+- url: https://api-zora.reservoir.tools
+  description: Zora
+security:
+- API_KEY: []
+tags:
+- name: Accounts
+paths:
+  /orders/users/{user}/top-bids/v4:
+    get:
+      summary: User Top Bids
+      operationId: getOrdersUsersUserTopbidsV4
+      description: Return the top bids for the given user tokens. Please mark `excludeEOA` as `true` to exclude Blur orders.
+      parameters:
+      - description: 'Filter to a particular user. Example: `0xF296178d553C8Ec21A2fBD2c5dDa8CA9ac905A00`'
+        x-convert:
+          case: lower
+        name: user
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      - x-convert:
+          case: lower
+        x-alternatives:
+        - type: string
+          x-convert:
+            case: lower
+        - type: array
+          items:
+            type: string
+            x-convert:
+              case: lower
+          collectionFormat: multi
+          name: collection
+        name: collection
+        in: query
+        schema:
+          type: string
+      - description: Filter to a particular contracts set.
+        x-convert:
+          case: lower
+        name: contractsSetId
+        in: query
+        schema:
+          type: string
+      - description: 'Filter to a particular community. Example: `artblocks`'
+        x-convert:
+          case: lower
+        name: community
+        in: query
+        schema:
+          type: string
+      - description: 'Filter to a particular collection set. Example: `8daa732ebe5db23f267e58d52f1c9b1879279bcdf4f78b8fb563390e6946ea65`'
+        x-convert:
+          case: lower
+        name: collectionsSetId
+        in: query
+        schema:
+          type: string
+      - description: If true, urls will only be returned for optimized sources that support royalties. defaults to **false**
+        name: optimizeCheckoutURL
+        in: query
+        schema:
+          type: boolean
+      - description: If true, criteria metadata is included in the response. defaults to **true**
+        name: includeCriteriaMetadata
+        in: query
+        schema:
+          type: boolean
+      - description: Exclude orders that can only be filled by EOAs, to support filling with smart contracts. defaults to **false**
+        name: excludeEOA
+        in: query
+        schema:
+          type: boolean
+      - description: If true, prices will include missing royalties to be added on-top. defaults to **false**
+        name: normalizeRoyalties
+        in: query
+        schema:
+          type: boolean
+      - description: If true, will return the collection non flagged floor ask events. defaults to **false**
+        name: useNonFlaggedFloorAsk
+        in: query
+        schema:
+          type: boolean
+      - description: Use continuation token to request next offset of items.
+        name: continuation
+        in: query
+        schema:
+          type: string
+      - description: Order of the items are returned in the response. Options are `topBidValue`, `dateCreated`, `orderExpiry`, and `floorDifferencePercentage`. defaults to **topBidValue**
+        name: sortBy
+        in: query
+        schema:
+          type: string
+          enum:
+          - topBidValue
+          - dateCreated
+          - orderExpiry
+          - floorDifferencePercentage
+      - x-convert:
+          case: lower
+        name: sortDirection
+        in: query
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+        description: defaults to **desc**
+      - description: Amount of items returned in response. Max limit is 100 defaults to **20**
+        name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - description: Amount of tokens considered. Min is 1000, max is default. defaults to **10000**
+        name: sampleSize
+        in: query
+        schema:
+          type: integer
+          minimum: 1000
+          maximum: 100000
+      - description: Input any ERC20 address to return result in given currency
+        x-convert:
+          case: lower
+        name: displayCurrency
+        in: query
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      tags:
+      - Accounts
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/getUserTopBidsV4Response'
+      x-order: 7
+  /users/{user}/asks/v1:
+    get:
+      summary: User Asks (listings)
+      operationId: getUsersUserAsksV1
+      description: Get a list of asks (listings), filtered by maker.
+      parameters:
+      - description: 'Filter to a particular user. Example: `0xF296178d553C8Ec21A2fBD2c5dDa8CA9ac905A00`'
+        x-convert:
+          case: lower
+        name: user
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      - x-alternatives:
+        - type: array
+          items:
+            type: string
+          collectionFormat: multi
+          name: ids
+        - type: string
+        name: ids
+        in: query
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - description: 'activeª^º = currently valid
+
+          inactiveª^ = temporarily invalid
+
+          expiredª^, cancelledª^, filledª^ = permanently invalid'
+        name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - active
+          - inactive
+          - expired
+          - cancelled
+          - filled
+      - description: 'Filter to a particular collection with collection-id. Example: `0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`'
+        x-convert:
+          case: lower
+        name: collection
+        in: query
+        schema:
+          type: string
+      - description: 'Filter to a particular community. Example: `artblocks`'
+        x-convert:
+          case: lower
+        name: community
+        in: query
+        schema:
+          type: string
+      - description: 'Filter to a particular collection set. Requires `maker` to be passed. Example: `8daa732ebe5db23f267e58d52f1c9b1879279bcdf4f78b8fb563390e6946ea65`'
+        x-convert:
+          case: lower
+        name: collectionsSetId
+        in: query
+        schema:
+          type: string
+      - description: Order the items are returned in the response. Sorting by `price` is ascending order / Sorting by `createdAt` is descending order.  defaults to **createdAt**
+        name: sortBy
+        in: query
+        schema:
+          type: string
+          enum:
+          - createdAt
+          - price
+      - description: If true, criteria metadata is included in the response. defaults to **false**
+        name: includeCriteriaMetadata
+        in: query
+        schema:
+          type: boolean
+      - description: If true, raw data is included in the response. defaults to **false**
+        name: includeRawData
+        in: query
+        schema:
+          type: boolean
+      - description: If true, dynamic pricing data will be returned in the response. defaults to **false**
+        name: includeDynamicPricing
+        in: query
+        schema:
+          type: boolean
+      - description: If true, prices will include missing royalties to be added on-top. defaults to **false**
+        name: normalizeRoyalties
+        in: query
+        schema:
+          type: boolean
+      - description: Use continuation token to request next offset of items.
+        name: continuation
+        in: query
+        schema:
+          type: string
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+      - description: Amount of items returned in response. Max limit is 50. defaults to **50**
+        name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 50
+      - description: Return result in given currency
+        x-convert:
+          case: lower
+        name: displayCurrency
+        in: query
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      tags:
+      - Accounts
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/getOrdersBidsV5Response'
+      x-order: 5
+  /users/{user}/bids/v1:
+    get:
+      summary: User Bids (offers)
+      operationId: getUsersUserBidsV1
+      description: Get a list of bids (offers), filtered by maker.
+      parameters:
+      - description: 'Filter to a particular user. Example: `0xF296178d553C8Ec21A2fBD2c5dDa8CA9ac905A00`'
+        x-convert:
+          case: lower
+        name: user
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      - x-alternatives:
+        - type: array
+          items:
+            type: string
+          collectionFormat: multi
+          name: ids
+        - type: string
+        name: ids
+        in: query
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - description: Filter to a particular order type. Must be one of `token`, `collection`, `attribute`, `custom`.
+        name: type
+        in: query
+        schema:
+          type: string
+          enum:
+          - token
+          - collection
+          - attribute
+          - custom
+      - description: 'activeª^º = currently valid
+
+          inactiveª^ = temporarily invalid
+
+          valid^ = both active and inactive orders'
+        name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - active
+          - inactive
+          - valid
+      - description: 'Filter to a particular collection bids with collection-id. Example: `0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`'
+        x-convert:
+          case: lower
+        name: collection
+        in: query
+        schema:
+          type: string
+      - description: 'Filter to a particular community. Example: `artblocks`'
+        x-convert:
+          case: lower
+        name: community
+        in: query
+        schema:
+          type: string
+      - description: 'Filter to a particular collection set. Requires `maker` to be passed. Example: `8daa732ebe5db23f267e58d52f1c9b1879279bcdf4f78b8fb563390e6946ea65`'
+        x-convert:
+          case: lower
+        name: collectionsSetId
+        in: query
+        schema:
+          type: string
+      - description: Order the items are returned in the response. Defaults sorting direction to descending.  defaults to **createdAt**
+        name: sortBy
+        in: query
+        schema:
+          type: string
+          enum:
+          - createdAt
+          - price
+      - description: If true, criteria metadata is included in the response. defaults to **false**
+        name: includeCriteriaMetadata
+        in: query
+        schema:
+          type: boolean
+      - description: If true, raw data is included in the response. defaults to **false**
+        name: includeRawData
+        in: query
+        schema:
+          type: boolean
+      - description: If true, the depth of each order is included in the response. defaults to **false**
+        name: includeDepth
+        in: query
+        schema:
+          type: boolean
+      - description: If true, prices will include missing royalties to be added on-top. defaults to **false**
+        name: normalizeRoyalties
+        in: query
+        schema:
+          type: boolean
+      - description: Use continuation token to request next offset of items.
+        name: continuation
+        in: query
+        schema:
+          type: string
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+      - description: Amount of items returned in response. Max limit is 50. defaults to **50**
+        name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 50
+      - description: Return result in given currency
+        x-convert:
+          case: lower
+        name: displayCurrency
+        in: query
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      tags:
+      - Accounts
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/getOrdersBidsV5Response'
+      x-order: 5
+  /users/{user}/collections/v4:
+    get:
+      summary: User collections
+      operationId: getUsersUserCollectionsV4
+      description: Get aggregate stats for a user, grouped by collection. Useful for showing total portfolio information.
+      parameters:
+      - description: 'Filter to a particular user. Example: `0xF296178d553C8Ec21A2fBD2c5dDa8CA9ac905A00`'
+        x-convert:
+          case: lower
+        name: user
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      - description: 'Filter to a particular community. Example: `artblocks`'
+        x-convert:
+          case: lower
+        name: community
+        in: query
+        schema:
+          type: string
+      - description: 'Filter to a particular collection set. Example: `8daa732ebe5db23f267e58d52f1c9b1879279bcdf4f78b8fb563390e6946ea65`'
+        x-convert:
+          case: lower
+        name: collectionsSetId
+        in: query
+        schema:
+          type: string
+      - description: 'Array of collections. Max limit is 100. Example: `collections[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`'
+        x-alternatives:
+        - type: array
+          description: 'Array of collections. Max limit is 100. Example: `collections[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`'
+          minItems: 1
+          maxItems: 100
+          items:
+            type: string
+            x-convert:
+              case: lower
+          collectionFormat: multi
+          name: collection
+        - type: string
+          description: 'Array of collections. Max limit is 100. Example: `collections[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`'
+          x-convert:
+            case: lower
+        name: collection
+        in: query
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            x-convert:
+              case: lower
+          minItems: 1
+          maxItems: 100
+      - x-alternatives:
+        - type: array
+          maxItems: 100
+          items:
+            type: string
+          collectionFormat: multi
+          name: excludeCollections
+        - type: string
+        name: excludeCollections
+        in: query
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+      - description: 'Filter to a particular collection with name. This is case insensitive. Example: `ape`'
+        x-convert:
+          case: lower
+        name: name
+        in: query
+        schema:
+          type: string
+      - description: If true, top bid will be returned in the response. defaults to **false**
+        name: includeTopBid
+        in: query
+        schema:
+          type: boolean
+      - description: If true, number of tokens with bids will be returned in the response. defaults to **false**
+        name: includeLiquidCount
+        in: query
+        schema:
+          type: boolean
+      - description: If true, number of listed tokens will be returned in the response. defaults to **false**
+        name: includeOnSaleCount
+        in: query
+        schema:
+          type: boolean
+      - description: If true, will filter any collections marked as spam. defaults to **false**
+        name: excludeSpam
+        in: query
+        schema:
+          type: boolean
+      - description: If true, will filter any collections marked as spam. defaults to **false**
+        name: excludeNsfw
+        in: query
+        schema:
+          type: boolean
+      - description: Use offset to request the next batch of items. Max is 10,000. defaults to **0**
+        name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 10000
+      - description: Amount of items returned in response. max limit is 100. defaults to **20**
+        name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - description: Input any ERC20 address to return result in given currency. Applies to `topBid` and `floorAsk`.
+        x-convert:
+          case: lower
+        name: displayCurrency
+        in: query
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      - description: Order the items are returned in the response. Options are `allTimeVolume`, `totalValue`, `floorAskPrice` defaults to **allTimeVolume**
+        name: sortBy
+        in: query
+        schema:
+          type: string
+          enum:
+          - allTimeVolume
+          - totalValue
+          - floorAskPrice
+      - description: Order the items are returned in the response. defaults to **desc**
+        x-convert:
+          case: lower
+        name: sortDirection
+        in: query
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      tags:
+      - Accounts
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/getUserCollectionsV4Response'
+      x-order: 3
+  /users/{user}/tokens/v10:
+    get:
+      summary: User Tokens
+      operationId: getUsersUserTokensV10
+      description: Get tokens held by a user, along with ownership information such as associated orders and date acquired.
+      parameters:
+      - description: 'Filter to a particular user. Example: `0xF296178d553C8Ec21A2fBD2c5dDa8CA9ac905A00`'
+        x-convert:
+          case: lower
+        name: user
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      - description: Filter to a particular community, e.g. `artblocks`
+        x-convert:
+          case: lower
+        name: community
+        in: query
+        schema:
+          type: string
+      - description: 'Filter to a particular collection set. Example: `8daa732ebe5db23f267e58d52f1c9b1879279bcdf4f78b8fb563390e6946ea65`'
+        x-convert:
+          case: lower
+        name: collectionsSetId
+        in: query
+        schema:
+          type: string
+      - description: 'Array of collections. Max limit is 100. Example: `collections[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`'
+        x-alternatives:
+        - type: array
+          description: 'Array of collections. Max limit is 100. Example: `collections[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`'
+          minItems: 1
+          maxItems: 100
+          items:
+            type: string
+            x-convert:
+              case: lower
+          collectionFormat: multi
+          name: collection
+        - type: string
+          description: 'Array of collections. Max limit is 100. Example: `collections[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`'
+          x-convert:
+            case: lower
+        name: collection
+        in: query
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            x-convert:
+              case: lower
+          minItems: 1
+          maxItems: 100
+      - x-alternatives:
+        - type: array
+          maxItems: 100
+          items:
+            type: string
+          collectionFormat: multi
+          name: excludeCollections
+        - type: string
+        name: excludeCollections
+        in: query
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+      - description: Filter to a particular contract, e.g. `0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`
+        x-convert:
+          case: lower
+        name: contract
+        in: query
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      - description: 'Array of tokens. Max limit is 50. Example: `tokens[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:704 tokens[1]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:979`'
+        x-alternatives:
+        - type: array
+          description: 'Array of tokens. Max limit is 50. Example: `tokens[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:704 tokens[1]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:979`'
+          maxItems: 50
+          items:
+            type: string
+            pattern: ^0x[a-fA-F0-9]{40}:[0-9]+$
+            x-convert:
+              case: lower
+          collectionFormat: multi
+          name: tokens
+        - type: string
+          description: 'Array of tokens. Max limit is 50. Example: `tokens[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:704 tokens[1]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:979`'
+          pattern: ^0x[a-fA-F0-9]{40}:[0-9]+$
+          x-convert:
+            case: lower
+        name: tokens
+        in: query
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            pattern: ^0x[a-fA-F0-9]{40}:[0-9]+$
+            x-convert:
+              case: lower
+          maxItems: 50
+      - description: If true, prices will include missing royalties to be added on-top. defaults to **false**
+        name: normalizeRoyalties
+        in: query
+        schema:
+          type: boolean
+      - description: Order the items are returned in the response. Options are `acquiredAt`, `lastAppraisalValue` and `floorAskPrice`. `lastAppraisalValue` is the value of the last sale. `floorAskPrice` is the collection floor ask defaults to **acquiredAt**
+        name: sortBy
+        in: query
+        schema:
+          type: string
+          enum:
+          - acquiredAt
+          - lastAppraisalValue
+          - floorAskPrice
+      - description: Order the items are returned in the response. defaults to **desc**
+        x-convert:
+          case: lower
+        name: sortDirection
+        in: query
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - description: Use continuation token to request next offset of items.
+        name: continuation
+        in: query
+        schema:
+          type: string
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+      - description: Amount of items returned in response. Max limit is 200. defaults to **20**
+        name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 200
+      - description: If true, top bid will be returned in the response. defaults to **false**
+        name: includeTopBid
+        in: query
+        schema:
+          type: boolean
+      - description: If true, attributes will be returned in the response. defaults to **false**
+        name: includeAttributes
+        in: query
+        schema:
+          type: boolean
+      - description: If true, last sale data including royalties paid will be returned in the response. defaults to **false**
+        name: includeLastSale
+        in: query
+        schema:
+          type: boolean
+      - description: If true, raw data is included in the response. defaults to **false**
+        name: includeRawData
+        in: query
+        schema:
+          type: boolean
+      - description: If true, dynamic pricing data will be returned in the response. defaults to **false**
+        name: includeDynamicPricing
+        in: query
+        schema:
+          type: boolean
+      - description: If true, will filter any tokens marked as spam. defaults to **false**
+        name: excludeSpam
+        in: query
+        schema:
+          type: boolean
+      - description: If true, will filter any tokens marked as nsfw. defaults to **false**
+        name: excludeNsfw
+        in: query
+        schema:
+          type: boolean
+      - description: If true, will filter any tokens that are not listed defaults to **false**
+        name: onlyListed
+        in: query
+        schema:
+          type: boolean
+      - description: If true, will return the collection non flagged floor ask. defaults to **false**
+        name: useNonFlaggedFloorAsk
+        in: query
+        schema:
+          type: boolean
+      - description: Input any ERC20 address to return result in given currency. Applies to `topBid` and `floorAsk`.
+        x-convert:
+          case: lower
+        name: displayCurrency
+        in: query
+        schema:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      - description: 'Filter to a particular token by name. This is case sensitive. Example: `token #1`'
+        name: tokenName
+        in: query
+        schema:
+          type: string
+      tags:
+      - Accounts
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/getUserTokensV10Response'
+      x-order: 9
+components:
+  schemas:
+    Model52:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Model379:
+      type: object
+      properties:
+        tokenCount:
+          type: string
+        onSaleCount:
+          type: string
+        liquidCount:
+          type: string
+        totalValue:
+          type: number
+    Model195:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model194'
+    Model28:
+      type: object
+      description: Total volume change X-days vs previous X-days. (e.g. 7day [days 1-7] vs 7day prior [days 8-14]). A value over 1 is a positive gain, under 1 is a negative loss. e.g. 1 means no change; 1.1 means 10% increase; 0.9 means 10% decrease.
+      properties:
+        1day:
+          type: number
+        7day:
+          type: number
+        30day:
+          type: number
+    Model123:
+      type: object
+      properties:
+        token:
+          $ref: '#/components/schemas/Model121'
+        collection:
+          $ref: '#/components/schemas/Model122'
+    Model122:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        image:
+          type: string
+        isSpam:
+          type: boolean
+        isNsfw:
+          type: boolean
+    Model457:
+      type: object
+      properties:
+        id:
+          type: string
+        price:
+          $ref: '#/components/schemas/Model128'
+        maker:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        createdAt:
+          type: string
+          description: Time when added to indexer
+        validFrom:
+          type: number
+        validUntil:
+          type: number
+        floorDifferencePercentage:
+          type: number
+          description: Percentage difference between this bid and the current floor price.
+        source:
+          $ref: '#/components/schemas/source'
+        feeBreakdown:
+          $ref: '#/components/schemas/Model195'
+        criteria:
+          $ref: '#/components/schemas/Model124'
+        token:
+          $ref: '#/components/schemas/Model456'
+    Model193:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+          - dutch
+        data:
+          $ref: '#/components/schemas/Model192'
+    depth:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model196'
+    Model380:
+      type: object
+      properties:
+        collection:
+          $ref: '#/components/schemas/Model378'
+        ownership:
+          $ref: '#/components/schemas/Model379'
+    Model349:
+      type: object
+      properties:
+        bps:
+          type: number
+        recipient:
+          type: string
+    price:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/currency'
+        amount:
+          $ref: '#/components/schemas/amount'
+        netAmount:
+          $ref: '#/components/schemas/netAmount'
+    Model96:
+      type: object
+      description: Can be null if no active ask.
+      properties:
+        kind:
+          type: string
+          enum:
+          - dutch
+          - pool
+        data:
+          $ref: '#/components/schemas/metadata'
+    time:
+      type: object
+      properties:
+        start:
+          type: number
+        end:
+          type: number
+    Model60:
+      type: object
+      properties:
+        kind:
+          type: string
+        bps:
+          type: number
+        recipient:
+          type: string
+        source:
+          type: string
+        rawAmount:
+          type: string
+    Model456:
+      type: object
+      properties:
+        contract:
+          type: string
+        tokenId:
+          type: string
+        kind:
+          type: string
+        name:
+          type: string
+        image:
+          type: string
+        floorAskPrice:
+          $ref: '#/components/schemas/price'
+        lastSalePrice:
+          $ref: '#/components/schemas/price'
+        collection:
+          $ref: '#/components/schemas/Model455'
+    currency:
+      type: object
+      properties:
+        contract:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+        name:
+          type: string
+        symbol:
+          type: string
+        decimals:
+          type: number
+        chainId:
+          type: number
+    Model352:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Case sensitive
+        kind:
+          type: string
+          description: Can be `string`, `number, `date, or `range`.
+        value:
+          type: string
+          description: Case sensitive.
+        tokenCount:
+          type: number
+        onSaleCount:
+          type: number
+        floorAskPrice:
+          $ref: '#/components/schemas/Model91'
+        topBidValue:
+          type: number
+          description: Can be null.
+        createdAt:
+          type: string
+      required:
+      - value
+    Model128:
+      type: object
+      description: Return native currency unless displayCurrency contract was passed.
+      properties:
+        currency:
+          $ref: '#/components/schemas/currency'
+        amount:
+          $ref: '#/components/schemas/amount'
+        netAmount:
+          $ref: '#/components/schemas/netAmount'
+    amount:
+      type: object
+      description: Amount with fees & royalties included.
+      properties:
+        raw:
+          type: string
+          pattern: ^-?[0-9]+$
+        decimal:
+          type: number
+        usd:
+          type: number
+        native:
+          type: number
+    Model21:
+      type: object
+      description: Current rank based from overall volume
+      properties:
+        1day:
+          type: number
+        7day:
+          type: number
+        30day:
+          type: number
+        allTime:
+          type: number
+    Model194:
+      type: object
+      properties:
+        kind:
+          type: string
+          description: Can be marketplace or royalty
+        recipient:
+          type: string
+        bps:
+          type: number
+    Model196:
+      type: object
+      properties:
+        price:
+          type: number
+        quantity:
+          type: number
+        uniqueMakers:
+          type: number
+    Model376:
+      type: object
+      description: Current floor ask price
+      properties:
+        currency:
+          $ref: '#/components/schemas/currency'
+        amount:
+          $ref: '#/components/schemas/amount'
+        netAmount:
+          $ref: '#/components/schemas/netAmount'
+    Model458:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model457'
+    netAmount:
+      type: object
+      description: Amount with fees & royalties removed.
+      properties:
+        raw:
+          type: string
+          pattern: ^-?[0-9]+$
+        decimal:
+          type: number
+        usd:
+          type: number
+        native:
+          type: number
+    Model336:
+      type: object
+      properties:
+        id:
+          type: string
+        price:
+          $ref: '#/components/schemas/price'
+        maker:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        validFrom:
+          type: number
+        validUntil:
+          type: number
+        source:
+          $ref: '#/components/schemas/source'
+    getOrdersBidsV5Response:
+      type: object
+      properties:
+        orders:
+          $ref: '#/components/schemas/Model205'
+        continuation:
+          type: string
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+    getUserTopBidsV4Response:
+      type: object
+      properties:
+        totalTokensWithBids:
+          type: number
+          description: Amount of token with bids.
+        totalAmount:
+          type: number
+          description: Amount of currency from all token bids; native currency unless `displayCurrency` passed
+        topBids:
+          $ref: '#/components/schemas/Model458'
+        continuation:
+          type: string
+    Model340:
+      type: object
+      properties:
+        tokenCount:
+          type: string
+        onSaleCount:
+          type: string
+        floorAsk:
+          $ref: '#/components/schemas/Model339'
+        acquiredAt:
+          type: string
+    floorSale:
+      type: object
+      description: The floor sale from X-days ago.
+      properties:
+        1day:
+          type: number
+        7day:
+          type: number
+        30day:
+          type: number
+    Model197:
+      type: object
+      properties:
+        id:
+          type: string
+        kind:
+          type: string
+          description: This is the `orderKind`.
+        side:
+          type: string
+          description: Either `buy` or `sell`
+          enum:
+          - buy
+          - sell
+        status:
+          type: string
+          description: Can be `active`, `inactive`, `expired`, `canceled`, or `filled`
+        tokenSetId:
+          type: string
+        tokenSetSchemaHash:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{64}$
+          x-convert:
+            case: lower
+        contract:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        contractKind:
+          type: string
+          x-convert:
+            case: lower
+        maker:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        taker:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        price:
+          $ref: '#/components/schemas/Model128'
+        validFrom:
+          type: number
+        validUntil:
+          type: number
+        quantityFilled:
+          type: number
+          description: With ERC1155s, quantity can be higher than 1
+        quantityRemaining:
+          type: number
+          description: With ERC1155s, quantity can be higher than 1
+        dynamicPricing:
+          $ref: '#/components/schemas/Model193'
+        criteria:
+          $ref: '#/components/schemas/Model124'
+        source:
+          $ref: '#/components/schemas/metadata'
+        feeBps:
+          type: number
+        feeBreakdown:
+          $ref: '#/components/schemas/Model195'
+        expiration:
+          type: number
+        isReservoir:
+          type: boolean
+        isDynamic:
+          type: boolean
+        createdAt:
+          type: string
+          description: Time when added to indexer
+        updatedAt:
+          type: string
+          description: Time when updated in indexer
+        originatedAt:
+          type: string
+          description: Time when created by maker
+        rawData:
+          $ref: '#/components/schemas/metadata'
+        isNativeOffChainCancellable:
+          type: boolean
+        depth:
+          $ref: '#/components/schemas/depth'
+      required:
+      - id
+      - kind
+      - side
+      - tokenSetId
+      - tokenSetSchemaHash
+      - maker
+      - taker
+      - validFrom
+      - validUntil
+      - expiration
+      - createdAt
+      - updatedAt
+    Model191:
+      type: object
+      properties:
+        start:
+          $ref: '#/components/schemas/price'
+        end:
+          $ref: '#/components/schemas/price'
+    Model339:
+      type: object
+      description: Can be null if no asks.
+      properties:
+        id:
+          type: string
+        price:
+          $ref: '#/components/schemas/price'
+        maker:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        kind:
+          type: string
+        validFrom:
+          type: number
+        validUntil:
+          type: number
+        source:
+          $ref: '#/components/schemas/source'
+        rawData:
+          $ref: '#/components/schemas/metadata'
+        isNativeOffChainCancellable:
+          type: boolean
+    Model455:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        imageUrl:
+          type: string
+        floorAskPrice:
+          $ref: '#/components/schemas/Model454'
+    volume:
+      type: object
+      description: Total volume in given time period.
+      properties:
+        1day:
+          type: number
+        7day:
+          type: number
+        30day:
+          type: number
+        allTime:
+          type: number
+    Model454:
+      type: object
+      description: Native currency to chain unless displayCurrency is passed.
+      properties:
+        currency:
+          $ref: '#/components/schemas/currency'
+        amount:
+          $ref: '#/components/schemas/amount'
+        netAmount:
+          $ref: '#/components/schemas/netAmount'
+    Model381:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model380'
+    Model124:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+          - token
+        data:
+          $ref: '#/components/schemas/Model123'
+    sampleImages:
+      type: array
+      items:
+        type: string
+    Model378:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Collection Id
+        slug:
+          type: string
+        name:
+          type: string
+        image:
+          type: string
+        isSpam:
+          type: boolean
+          default: false
+        banner:
+          type: string
+        discordUrl:
+          type: string
+        externalUrl:
+          type: string
+        twitterUsername:
+          type: string
+        twitterUrl:
+          type: string
+        openseaVerificationStatus:
+          type: string
+        magicedenVerificationStatus:
+          type: string
+        description:
+          type: string
+        metadataDisabled:
+          type: boolean
+          default: false
+        sampleImages:
+          $ref: '#/components/schemas/sampleImages'
+        tokenCount:
+          type: string
+          description: Total token count
+        tokenSetId:
+          type: string
+        primaryContract:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        floorAskPrice:
+          $ref: '#/components/schemas/Model376'
+        topBidValue:
+          $ref: '#/components/schemas/Model377'
+        topBidMaker:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        topBidSourceDomain:
+          type: string
+        rank:
+          $ref: '#/components/schemas/Model21'
+        volume:
+          $ref: '#/components/schemas/volume'
+        volumeChange:
+          $ref: '#/components/schemas/Model28'
+        floorSale:
+          $ref: '#/components/schemas/floorSale'
+        contractKind:
+          type: string
+          description: Returns `erc721`, `erc1155`, etc.
+    getUserCollectionsV4Response:
+      type: object
+      properties:
+        collections:
+          $ref: '#/components/schemas/Model381'
+    Model205:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model197'
+    Model338:
+      type: object
+      description: Can be null if not active bids.
+      properties:
+        id:
+          type: string
+        price:
+          $ref: '#/components/schemas/price'
+        source:
+          $ref: '#/components/schemas/source'
+    Model62:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Deprecated. Use `saleId` instead.
+        saleId:
+          type: string
+          description: Unique identifier made from txn hash, price, etc.
+        token:
+          $ref: '#/components/schemas/Model57'
+        orderSource:
+          type: string
+        orderSide:
+          type: string
+          description: Can be `ask` or `bid`.
+          enum:
+          - ask
+          - bid
+        orderKind:
+          type: string
+        orderId:
+          type: string
+        orderIsReservoir:
+          type: boolean
+        from:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        to:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        amount:
+          type: string
+        fillSource:
+          type: string
+        block:
+          type: number
+        txHash:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{64}$
+          x-convert:
+            case: lower
+        logIndex:
+          type: number
+        batchIndex:
+          type: number
+        timestamp:
+          type: number
+          description: Time added on the blockchain
+        price:
+          $ref: '#/components/schemas/price'
+        washTradingScore:
+          type: number
+        royaltyFeeBps:
+          type: number
+        marketplaceFeeBps:
+          type: number
+        paidFullRoyalty:
+          type: boolean
+        feeBreakdown:
+          $ref: '#/components/schemas/Model61'
+        comment:
+          type: string
+        isDeleted:
+          type: boolean
+        createdAt:
+          type: string
+          description: Time when added to indexer
+        updatedAt:
+          type: string
+          description: Time when updated in indexer
+    Model97:
+      type: object
+      properties:
+        id:
+          type: string
+        price:
+          $ref: '#/components/schemas/price'
+        maker:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        validFrom:
+          type: number
+        validUntil:
+          type: number
+        quantityFilled:
+          type: number
+        quantityRemaining:
+          type: number
+        dynamicPricing:
+          $ref: '#/components/schemas/Model96'
+        source:
+          $ref: '#/components/schemas/source'
+    Model91:
+      type: object
+      description: Can be null if no active asks.
+      properties:
+        currency:
+          $ref: '#/components/schemas/currency'
+        amount:
+          $ref: '#/components/schemas/amount'
+        netAmount:
+          $ref: '#/components/schemas/netAmount'
+    getUserTokensV10Response:
+      type: object
+      properties:
+        tokens:
+          $ref: '#/components/schemas/Model356'
+        continuation:
+          type: string
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+    Model355:
+      type: object
+      properties:
+        token:
+          $ref: '#/components/schemas/Model354'
+        ownership:
+          $ref: '#/components/schemas/Model340'
+    Model356:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model355'
+    Model192:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/Model191'
+        time:
+          $ref: '#/components/schemas/time'
+    Model61:
+      type: array
+      description: '`kind` can be `marketplace` or `royalty`'
+      items:
+        $ref: '#/components/schemas/Model60'
+    Model57:
+      type: object
+      properties:
+        contract:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+          x-convert:
+            case: lower
+        tokenId:
+          type: string
+          pattern: ^-?[0-9]+$
+        name:
+          type: string
+        image:
+          type: string
+        collection:
+          $ref: '#/components/schemas/Model52'
+    source:
+      type: object
+      properties:
+        id:
+          type: string
+        domain:
+          type: string
+        name:
+          type: string
+        icon:
+          type: string
+        url:
+          type: string
+    Model121:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          pattern: ^-?[0-9]+$
+        name:
+          type: string
+        image:
+          type: string
+        isSpam:
+          type: boolean
+        isNsfw:
+          type: boolean
+    metadata:
+      type: object
+    Model377:
+      type: object
+      description: Top bid offer currently if offer is valid
+      properties:
+        currency:
+          $ref: '#/components/schemas/currency'
+        amount:
+          $ref: '#/components/schemas/amount'
+        netAmount:
+          $ref: '#/components/schemas/netAmount'
+    Model353:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model352'
+    Model351:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+          description: Open Sea slug
+        symbol:
+          type: string
+        contractDeployedAt:
+          type: string
+          description: Time when contract was deployed
+        imageUrl:
+          type: string
+        isSpam:
+          type: boolean
+          default: false
+        isNsfw:
+          type: boolean
+          default: false
+        metadataDisabled:
+          type: boolean
+          default: false
+        openseaVerificationStatus:
+          type: string
+        tokenCount:
+          type: string
+          description: Total tokens within the collection.
+        floorAsk:
+          $ref: '#/components/schemas/Model336'
+        royaltiesBps:
+          type: number
+        royalties:
+          $ref: '#/components/schemas/Model350'
+    Model350:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model349'
+    Model354:
+      type: object
+      properties:
+        chainId:
+          type: number
+        contract:
+          type: string
+        tokenId:
+          type: string
+        kind:
+          type: string
+          description: Can be erc721, erc115, etc.
+        name:
+          type: string
+        image:
+          type: string
+        imageSmall:
+          type: string
+        imageLarge:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/metadata'
+        description:
+          type: string
+        supply:
+          type: number
+          description: Can be higher than one if erc1155.
+        remainingSupply:
+          type: number
+        rarityScore:
+          type: number
+          description: No rarity for collections over 100k
+        rarityRank:
+          type: number
+          description: No rarity rank for collections over 100k
+        media:
+          type: string
+        isFlagged:
+          type: boolean
+          default: false
+        isSpam:
+          type: boolean
+          default: false
+        isNsfw:
+          type: boolean
+          default: false
+        metadataDisabled:
+          type: boolean
+          default: false
+        lastFlagUpdate:
+          type: string
+        lastFlagChange:
+          type: string
+        collection:
+          $ref: '#/components/schemas/Model351'
+        lastSale:
+          $ref: '#/components/schemas/Model62'
+        topBid:
+          $ref: '#/components/schemas/Model338'
+        floorAsk:
+          $ref: '#/components/schemas/Model97'
+        lastAppraisalValue:
+          type: number
+          description: The value of the last sale.Can be null.
+        attributes:
+          $ref: '#/components/schemas/Model353'
+      required:
+      - chainId
+  securitySchemes:
+    API_KEY:
+      type: apiKey
+      name: x-api-key
+      in: header
+      x-default: demo-api-key
+x-alt-definitions:
+  data:
+    type: object
+    properties:
+      collectionId:
+        type: string
+      collectionName:
+        type: string
+      tokenName:
+        type: string
+      image:
+        type: string
+  metadata:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - token
+      data:
+        $ref: '#/x-alt-definitions/data'
+  Model1:
+    type: object
+    properties:
+      collectionId:
+        type: string
+      collectionName:
+        type: string
+      image:
+        type: string
+  Model2:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - collection
+      data:
+        $ref: '#/x-alt-definitions/Model1'
+  Model3:
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+    required:
+    - value
+  attributes:
+    type: array
+    items:
+      $ref: '#/x-alt-definitions/Model3'
+  Model4:
+    type: object
+    properties:
+      collectionId:
+        type: string
+      collectionName:
+        type: string
+      attributes:
+        $ref: '#/x-alt-definitions/attributes'
+      image:
+        type: string
+  Model5:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - attribute
+      data:
+        $ref: '#/x-alt-definitions/Model4'
+  token:
+    type: object
+    properties:
+      tokenId:
+        type: string
+        pattern: ^-?[0-9]+$
+      name:
+        type: string
+      image:
+        type: string
+      isSpam:
+        type: boolean
+      isNsfw:
+        type: boolean
+  collection:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      image:
+        type: string
+      isSpam:
+        type: boolean
+      isNsfw:
+        type: boolean
+  Model6:
+    type: object
+    properties:
+      token:
+        $ref: '#/x-alt-definitions/token'
+      collection:
+        $ref: '#/x-alt-definitions/collection'
+  criteria:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - token
+      data:
+        $ref: '#/x-alt-definitions/Model6'
+  Model7:
+    type: object
+    properties:
+      collection:
+        $ref: '#/x-alt-definitions/collection'
+  Model8:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - collection
+      data:
+        $ref: '#/x-alt-definitions/Model7'
+  Model9:
+    type: object
+    properties:
+      collection:
+        $ref: '#/x-alt-definitions/collection'
+      attribute:
+        $ref: '#/x-alt-definitions/Model3'
+  Model10:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - attribute
+      data:
+        $ref: '#/x-alt-definitions/Model9'
+  Model11:
+    type: object
+    properties:
+      tokenSetId:
+        type: string
+  Model12:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - custom
+      data:
+        $ref: '#/x-alt-definitions/Model11'
+  Model13:
+    type: object
+    properties:
+      collectionName:
+        type: string
+      tokenName:
+        type: string
+      image:
+        type: string
+  Model14:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - token
+      data:
+        $ref: '#/x-alt-definitions/Model13'
+  Model15:
+    type: object
+    properties:
+      collectionName:
+        type: string
+      image:
+        type: string
+  Model16:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - collection
+      data:
+        $ref: '#/x-alt-definitions/Model15'
+  Model17:
+    type: object
+    properties:
+      collectionName:
+        type: string
+      attributes:
+        $ref: '#/x-alt-definitions/attributes'
+      image:
+        type: string
+  Model18:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - attribute
+      data:
+        $ref: '#/x-alt-definitions/Model17'
+  currency:
+    type: object
+    properties:
+      contract:
+        type: string
+        pattern: ^0x[a-fA-F0-9]{40}$
+      name:
+        type: string
+      symbol:
+        type: string
+      decimals:
+        type: number
+      chainId:
+        type: number
+  amount:
+    type: object
+    description: Amount with fees & royalties included.
+    properties:
+      raw:
+        type: string
+        pattern: ^-?[0-9]+$
+      decimal:
+        type: number
+      usd:
+        type: number
+      native:
+        type: number
+  netAmount:
+    type: object
+    description: Amount with fees & royalties removed.
+    properties:
+      raw:
+        type: string
+        pattern: ^-?[0-9]+$
+      decimal:
+        type: number
+      usd:
+        type: number
+      native:
+        type: number
+  start:
+    type: object
+    properties:
+      currency:
+        $ref: '#/x-alt-definitions/currency'
+      amount:
+        $ref: '#/x-alt-definitions/amount'
+      netAmount:
+        $ref: '#/x-alt-definitions/netAmount'
+  price:
+    type: object
+    properties:
+      start:
+        $ref: '#/x-alt-definitions/start'
+      end:
+        $ref: '#/x-alt-definitions/start'
+  time:
+    type: object
+    properties:
+      start:
+        type: number
+      end:
+        type: number
+  Model19:
+    type: object
+    properties:
+      price:
+        $ref: '#/x-alt-definitions/price'
+      time:
+        $ref: '#/x-alt-definitions/time'
+  dynamicPricing:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - dutch
+      data:
+        $ref: '#/x-alt-definitions/Model19'
+  prices:
+    type: array
+    items:
+      $ref: '#/x-alt-definitions/start'
+  Model20:
+    type: object
+    properties:
+      pool:
+        type: string
+      prices:
+        $ref: '#/x-alt-definitions/prices'
+  Model21:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - pool
+      data:
+        $ref: '#/x-alt-definitions/Model20'
+  Model22:
+    type: object
+    properties:
+      fromBlock:
+        type: number
+      toBlock:
+        type: number
+      blockRange:
+        type: number
+    required:
+    - fromBlock
+    - toBlock
+  Model23:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - all
+      data:
+        $ref: '#/x-alt-definitions/Model22'
+  Model24:
+    type: object
+    properties:
+      contract:
+        type: string
+        pattern: ^0x[a-fA-F0-9]{40}$
+      fromTimestamp:
+        type: number
+      toTimestamp:
+        type: number
+      timestampRange:
+        type: number
+    required:
+    - contract
+    - fromTimestamp
+    - toTimestamp
+  Model25:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - contract
+      data:
+        $ref: '#/x-alt-definitions/Model24'
+  Model26:
+    type: object
+    properties:
+      txHash:
+        type: string
+        pattern: ^0x[a-fA-F0-9]{64}$
+    required:
+    - txHash
+  Model27:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - transaction
+      data:
+        $ref: '#/x-alt-definitions/Model26'
+  events:
+    type: array
+    items:
+      type: string
+  eventsType:
+    type: array
+    items:
+      type: string
+      enum:
+      - ftTransferEvents
+  syncDetails:
+    type: object
+    properties:
+      method:
+        type: string
+        enum:
+        - events
+      events:
+        $ref: '#/x-alt-definitions/events'
+      eventsType:
+        $ref: '#/x-alt-definitions/eventsType'
+  Model28:
+    type: object
+    properties:
+      method:
+        type: string
+        enum:
+        - address
+      address:
+        type: string
+        pattern: ^0x[a-fA-F0-9]{40}$
+  collections:
+    type: array
+    description: 'Array of collection ids to disable metadata for. Max limit is 50. Example: `collections[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63 collections[1]: 0x521f9c7505005cfa19a8e5786a9c3c9c9f5e6f42`'
+    maxItems: 50
+    items:
+      type: string
+      x-convert:
+        case: lower
+  Model29:
+    type: array
+    description: 'Update to one or more collections. Max limit is 50. Example: `0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`'
+    minItems: 1
+    maxItems: 50
+    items:
+      type: string
+      x-convert:
+        case: lower
+  exactOrderSource:
+    type: array
+    maxItems: 2
+    items:
+      type: string
+      pattern: ^[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$|localhost
+      x-convert:
+        case: lower
+  ids:
+    type: array
+    description: 'Array of order ids to invalidate. Max limit is 50. Example: `ids[0]: 0x505b35e849bccbd787bf670b3e85577fa5c2814cfa0ecab50867e4dc5b5362d4 ids[1]: 0xd0e83bdeb5b79352d4a3657387d1e438e9df68d773bb3b3c88da41948ef48188`'
+    maxItems: 50
+    items:
+      type: string
+  tokens:
+    type: array
+    description: 'Array of tokens to disable or reenable metadata for. Max limit is 50. Example: `tokens[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:704 tokens[1]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:979`'
+    maxItems: 50
+    items:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}:[0-9]+$
+      x-convert:
+        case: lower
+  Model30:
+    type: array
+    description: 'Array of tokens. Max limit is 50. Example: `tokens[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:704 tokens[1]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:979`'
+    maxItems: 50
+    items:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}:[0-9]+$
+      x-convert:
+        case: lower
+  Model31:
+    type: array
+    description: 'Array of tokens to refresh. Max limit is 50. Example: `tokens[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:704 tokens[1]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:979`'
+    maxItems: 50
+    items:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}:[0-9]+$
+      x-convert:
+        case: lower
+x-provenance:
+  method: searched
+  source: https://nft.reservoir.tools/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://nft.reservoir.tools/reference/getapikeyskeyratelimits.md
+  - https://nft.reservoir.tools/reference/getchainstatsv1.md
+  - https://nft.reservoir.tools/reference/getcollectionsactivityv6.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectionattributesallv4.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectionattributesexplorev6.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectionidbidsv1.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectionmarketplaceconfigurationsv2.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectionownersdistributionv1.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectiontoptradersv1.md
+  - https://nft.reservoir.tools/reference/getcollectionsdailyvolumesv1.md
+  - https://nft.reservoir.tools/reference/getcollectionssearchv1.md
+  - https://nft.reservoir.tools/reference/getcollectionssetscollectionssetidownersdistributionv1.md
+  - https://nft.reservoir.tools/reference/getcollectionstrendingmintsv1.md
+  - https://nft.reservoir.tools/reference/getcollectionstrendingmintsv2.md
+  - https://nft.reservoir.tools/reference/getcollectionstrendingv1.md
+  - https://nft.reservoir.tools/reference/getcollectionsv7.md
+  - https://nft.reservoir.tools/reference/getcrosspostingordersv1.md
+  - https://nft.reservoir.tools/reference/geteventsasksv3.md
+  - https://nft.reservoir.tools/reference/geteventsbidsv3.md
+  - https://nft.reservoir.tools/reference/geteventscollectionsflooraskv2.md
+  - https://nft.reservoir.tools/reference/geteventscollectionstopbidv2.md
+  - https://nft.reservoir.tools/reference/geteventstokensflooraskv4.md
+  - https://nft.reservoir.tools/reference/getordersasksv5.md
+  - https://nft.reservoir.tools/reference/getordersbidsv6.md
+  - https://nft.reservoir.tools/reference/getordersdepthv1.md
+  - https://nft.reservoir.tools/reference/getordersusersusertopbidsv4.md
+  - https://nft.reservoir.tools/reference/getownerscommoncollectionsv1.md
+  - https://nft.reservoir.tools/reference/getownerscrosscollectionsv1.md
+  - https://nft.reservoir.tools/reference/getownersv2.md
+  - https://nft.reservoir.tools/reference/getredirectcollectionscollectionimagev1.md
+  - https://nft.reservoir.tools/reference/getredirectcurrencyaddressiconv1.md
+  - https://nft.reservoir.tools/reference/getredirectsourcessourcelogov2.md
+  - https://nft.reservoir.tools/reference/getredirectsourcessourcetokenstokenlinkv2.md
+  - https://nft.reservoir.tools/reference/getredirecttokenstokenimagev1.md
+  - https://nft.reservoir.tools/reference/getsalesv6.md
+  - https://nft.reservoir.tools/reference/getsearchcollectionsv2.md
+  - https://nft.reservoir.tools/reference/getsourcesv1.md
+  - https://nft.reservoir.tools/reference/getstatsv2.md
+  - https://nft.reservoir.tools/reference/gettokensbootstrapv1.md
+  - https://nft.reservoir.tools/reference/gettokensflagchangesv1.md
+  - https://nft.reservoir.tools/reference/gettokensfloorv1.md
+  - https://nft.reservoir.tools/reference/gettokensidsv1.md
+  - https://nft.reservoir.tools/reference/gettokenstokenactivityv5.md
+  - https://nft.reservoir.tools/reference/gettokenstokenasksv1.md
+  - https://nft.reservoir.tools/reference/gettokenstokenbidsv1.md
+  - https://nft.reservoir.tools/reference/gettokensv7.md
+  - https://nft.reservoir.tools/reference/gettransactionssyncedv2.md
+  - https://nft.reservoir.tools/reference/gettransactionstxhashsyncedv1.md
+  - https://nft.reservoir.tools/reference/gettransfersbulkv2.md
+  - https://nft.reservoir.tools/reference/gettransfersv4.md
+  - https://nft.reservoir.tools/reference/getusersactivityv6.md
+  - https://nft.reservoir.tools/reference/getusersuserasksv1.md
+  - https://nft.reservoir.tools/reference/getusersuserbidsv1.md
+  - https://nft.reservoir.tools/reference/getusersusercollectionsv4.md
+  - https://nft.reservoir.tools/reference/getusersusertokensv10.md
+  - https://nft.reservoir.tools/reference/postcollectionscollectionoverridev1.md
+  - https://nft.reservoir.tools/reference/postcollectionscollectionoverridev2.md
+  - https://nft.reservoir.tools/reference/postcollectionsdisablemetadatav1.md
+  - https://nft.reservoir.tools/reference/postcollectionsnsfwstatusv1.md
+  - https://nft.reservoir.tools/reference/postcollectionsrefreshv2.md
+  - https://nft.reservoir.tools/reference/postcollectionssetsv1.md
+  - https://nft.reservoir.tools/reference/postcollectionsspamstatusv1.md
+  - https://nft.reservoir.tools/reference/postcontractssetsv1.md
+  - https://nft.reservoir.tools/reference/postexecuteauthsignaturev1.md
+  - https://nft.reservoir.tools/reference/postexecutebidv5.md
+  - https://nft.reservoir.tools/reference/postexecutebuyv7.md
+  - https://nft.reservoir.tools/reference/postexecutecallv1.md
+  - https://nft.reservoir.tools/reference/postexecutecancelsignaturev1.md
+  - https://nft.reservoir.tools/reference/postexecutecancelv3.md
+  - https://nft.reservoir.tools/reference/postexecutedepositv1.md
+  - https://nft.reservoir.tools/reference/postexecutelistv5.md
+  - https://nft.reservoir.tools/reference/postexecutemintv1.md
+  - https://nft.reservoir.tools/reference/postexecutepermitsignaturev1.md
+  - https://nft.reservoir.tools/reference/postexecutepresignaturev1.md
+  - https://nft.reservoir.tools/reference/postexecuteresultsv1.md
+  - https://nft.reservoir.tools/reference/postexecutesellv7.md
+  - https://nft.reservoir.tools/reference/postexecutesolvecapacityv1.md
+  - https://nft.reservoir.tools/reference/postexecutesolvecapacityv2.md
+  - https://nft.reservoir.tools/reference/postexecutesolvev1.md
+  - https://nft.reservoir.tools/reference/postexecutestatusv1.md
+  - https://nft.reservoir.tools/reference/postexecutetransferv1.md
+  - https://nft.reservoir.tools/reference/postmanagementcosignersv1.md
+  - https://nft.reservoir.tools/reference/postmanagementmintssimulatev1.md
+  - https://nft.reservoir.tools/reference/postmanagementorderssimulatev1.md
+  - https://nft.reservoir.tools/reference/postordersinvalidatev1.md
+  - https://nft.reservoir.tools/reference/postorderv4.md
+  - https://nft.reservoir.tools/reference/posttokensdisablemetadatav1.md
+  - https://nft.reservoir.tools/reference/posttokensetsv2.md
+  - https://nft.reservoir.tools/reference/posttokensflagv1.md
+  - https://nft.reservoir.tools/reference/posttokensnsfwstatusv1.md
+  - https://nft.reservoir.tools/reference/posttokensrefreshv2.md
+  - https://nft.reservoir.tools/reference/posttokensspamstatusv1.md
+  - https://nft.reservoir.tools/reference/posttokenstokenoverridev1.md
+  - https://reservoirprotocol.readme.io/reference/getapikeyskeyratelimits.md
+  - https://reservoirprotocol.readme.io/reference/getchainstatsv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionsactivityv6.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectionattributesallv4.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectionattributesexplorev6.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectionidbidsv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectionmarketplaceconfigurationsv2.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectionownersdistributionv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectiontoptradersv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionsdailyvolumesv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionssearchv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionssetscollectionssetidownersdistributionv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionstrendingmintsv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionstrendingmintsv2.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionstrendingv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionsv7.md
+  - https://reservoirprotocol.readme.io/reference/getcrosspostingordersv1.md
+  - https://reservoirprotocol.readme.io/reference/geteventsasksv3.md
+  - https://reservoirprotocol.readme.io/reference/geteventsbidsv3.md
+  - https://reservoirprotocol.readme.io/reference/geteventscollectionsflooraskv2.md
+  - https://reservoirprotocol.readme.io/reference/geteventscollectionstopbidv2.md
+  - https://reservoirprotocol.readme.io/reference/geteventstokensflooraskv4.md
+  - https://reservoirprotocol.readme.io/reference/getordersasksv5.md
+  - https://reservoirprotocol.readme.io/reference/getordersbidsv6.md
+  - https://reservoirprotocol.readme.io/reference/getordersdepthv1.md
+  - https://reservoirprotocol.readme.io/reference/getordersusersusertopbidsv4.md
+  - https://reservoirprotocol.readme.io/reference/getownerscommoncollectionsv1.md
+  - https://reservoirprotocol.readme.io/reference/getownerscrosscollectionsv1.md
+  - https://reservoirprotocol.readme.io/reference/getownersv2.md
+  - https://reservoirprotocol.readme.io/reference/getredirectcollectionscollectionimagev1.md
+  - https://reservoirprotocol.readme.io/reference/getredirectcurrencyaddressiconv1.md
+  - https://reservoirprotocol.readme.io/reference/getredirectsourcessourcelogov2.md
+  - https://reservoirprotocol.readme.io/reference/getredirectsourcessourcetokenstokenlinkv2.md
+  - https://reservoirprotocol.readme.io/reference/getredirecttokenstokenimagev1.md
+  - https://reservoirprotocol.readme.io/reference/getsalesv6.md
+  - https://reservoirprotocol.readme.io/reference/getsearchcollectionsv2.md
+  - https://reservoirprotocol.readme.io/reference/getsourcesv1.md
+  - https://reservoirprotocol.readme.io/reference/getstatsv2.md
+  - https://reservoirprotocol.readme.io/reference/gettokensbootstrapv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokensflagchangesv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokensfloorv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokensidsv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokenstokenactivityv5.md
+  - https://reservoirprotocol.readme.io/reference/gettokenstokenasksv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokenstokenbidsv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokensv7.md
+  - https://reservoirprotocol.readme.io/reference/gettransactionssyncedv2.md
+  - https://reservoirprotocol.readme.io/reference/gettransactionstxhashsyncedv1.md
+  - https://reservoirprotocol.readme.io/reference/gettransfersbulkv2.md
+  - https://reservoirprotocol.readme.io/reference/gettransfersv4.md
+  - https://reservoirprotocol.readme.io/reference/getusersactivityv6.md
+  - https://reservoirprotocol.readme.io/reference/getusersuserasksv1.md
+  - https://reservoirprotocol.readme.io/reference/getusersuserbidsv1.md
+  - https://reservoirprotocol.readme.io/reference/getusersusercollectionsv4.md
+  - https://reservoirprotocol.readme.io/reference/getusersusertokensv10.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionscollectionoverridev1.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionscollectionoverridev2.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionsdisablemetadatav1.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionsnsfwstatusv1.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionsrefreshv2.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionssetsv1.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionsspamstatusv1.md
+  - https://reservoirprotocol.readme.io/reference/postcontractssetsv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecuteauthsignaturev1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutebidv5.md
+  - https://reservoirprotocol.readme.io/reference/postexecutebuyv7.md
+  - https://reservoirprotocol.readme.io/reference/postexecutecallv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutecancelsignaturev1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutecancelv3.md
+  - https://reservoirprotocol.readme.io/reference/postexecutedepositv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutelistv5.md
+  - https://reservoirprotocol.readme.io/reference/postexecutemintv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutepermitsignaturev1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutepresignaturev1.md
+  - https://reservoirprotocol.readme.io/reference/postexecuteresultsv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutesellv7.md
+  - https://reservoirprotocol.readme.io/reference/postexecutesolvecapacityv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutesolvecapacityv2.md
+  - https://reservoirprotocol.readme.io/reference/postexecutesolvev1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutestatusv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutetransferv1.md
+  - https://reservoirprotocol.readme.io/reference/postmanagementcosignersv1.md
+  - https://reservoirprotocol.readme.io/reference/postmanagementmintssimulatev1.md
+  - https://reservoirprotocol.readme.io/reference/postmanagementorderssimulatev1.md
+  - https://reservoirprotocol.readme.io/reference/postordersinvalidatev1.md
+  - https://reservoirprotocol.readme.io/reference/postorderv4.md
+  - https://reservoirprotocol.readme.io/reference/posttokensdisablemetadatav1.md
+  - https://reservoirprotocol.readme.io/reference/posttokensetsv2.md
+  - https://reservoirprotocol.readme.io/reference/posttokensflagv1.md
+  - https://reservoirprotocol.readme.io/reference/posttokensnsfwstatusv1.md
+  - https://reservoirprotocol.readme.io/reference/posttokensrefreshv2.md
+  - https://reservoirprotocol.readme.io/reference/posttokensspamstatusv1.md
+  - https://reservoirprotocol.readme.io/reference/posttokenstokenoverridev1.md
+  merge:
+    pages: 186
+    deduped: 1487
+    conflicts_kept_first: 0

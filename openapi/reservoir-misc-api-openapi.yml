@@ -1,0 +1,1359 @@
+openapi: 3.2.0
+info:
+  title: Reservoir Misc API
+  version: 5.296.1
+  description: You are viewing the reference docs for the Reservoir API. For a more complete overview with guides and examples, check out the Reservoir Protocol Docs.
+servers:
+- url: https://api.reservoir.tools
+  description: Ethereum
+- url: https://api-polygon.reservoir.tools
+  description: Polygon
+- url: https://api-base.reservoir.tools
+  description: Base
+- url: https://api-abstract.reservoir.tools
+  description: Abstract
+- url: https://api-abstract-testnet.reservoir.tools
+  description: Abstract Testnet
+- url: https://api-ancient8.reservoir.tools
+  description: Ancient8
+- url: https://api-ancient8-testnet.reservoir.tools
+  description: Ancient8 Testnet
+- url: https://api-anime-testnet.reservoir.tools
+  description: Anime Testnet
+- url: https://api-apechain.reservoir.tools
+  description: Apechain
+- url: https://api-apex.reservoir.tools
+  description: Apex
+- url: https://api-apex-testnet.reservoir.tools
+  description: Apex Testnet
+- url: https://api-arbitrum.reservoir.tools
+  description: Arbitrum
+- url: https://api-arbitrum-nova.reservoir.tools
+  description: Arbitrum Nova
+- url: https://api-astar-zkevm.reservoir.tools
+  description: Astar zkEVM
+- url: https://api-avalanche.reservoir.tools
+  description: Avalanche
+- url: https://api-amoy.reservoir.tools
+  description: Amoy
+- url: https://api-base-sepolia.reservoir.tools
+  description: Base Sepolia
+- url: https://api-berachain.reservoir.tools
+  description: Berachain
+- url: https://api-berachain-testnet.reservoir.tools
+  description: Berachain Testnet
+- url: https://api-b3.reservoir.tools
+  description: B3
+- url: https://api-b3-testnet.reservoir.tools
+  description: B3 Testnet
+- url: https://api-bitlayer.reservoir.tools
+  description: Bitlayer
+- url: https://api-blast.reservoir.tools
+  description: Blast
+- url: https://api-blast-sepolia.reservoir.tools
+  description: Blast Sepolia
+- url: https://api-boss.reservoir.tools
+  description: Boss
+- url: https://api-bsc.reservoir.tools
+  description: Binance Smart Chain
+- url: https://api-cloud.reservoir.tools
+  description: Cloud
+- url: https://api-creator-testnet.reservoir.tools
+  description: Creator Testnet
+- url: https://api-curtis.reservoir.tools
+  description: Curtis
+- url: https://api-cyber.reservoir.tools
+  description: Cyber
+- url: https://api-degen.reservoir.tools
+  description: Degen
+- url: https://api-flow.reservoir.tools
+  description: Flow
+- url: https://api-forma.reservoir.tools
+  description: Forma
+- url: https://api-forma-sketchpad.reservoir.tools
+  description: Forma Sketchpad
+- url: https://api-frame-testnet.reservoir.tools
+  description: Frame Testnet
+- url: https://api-game7.reservoir.tools
+  description: Game7
+- url: https://api-game7-testnet.reservoir.tools
+  description: Game7 Testnet
+- url: https://api-hychain.reservoir.tools
+  description: Hychain
+- url: https://api-hychain-testnet.reservoir.tools
+  description: Hychain Testnet
+- url: https://api-ink.reservoir.tools
+  description: Ink
+- url: https://api-linea.reservoir.tools
+  description: Linea
+- url: https://api-minato.reservoir.tools
+  description: Minato
+- url: https://api-monad-testnet.reservoir.tools
+  description: Monad Testnet
+- url: https://api-nebula.reservoir.tools
+  description: Nebula
+- url: https://api-opbnb.reservoir.tools
+  description: OPBNB
+- url: https://api-optimism.reservoir.tools
+  description: Optimism
+- url: https://api-polygon-zkevm.reservoir.tools
+  description: Polygon zkEVM
+- url: https://api-redstone.reservoir.tools
+  description: Redstone
+- url: https://api-scroll.reservoir.tools
+  description: Scroll
+- url: https://api-sei.reservoir.tools
+  description: Sei
+- url: https://api-sei-testnet.reservoir.tools
+  description: Sei Testnet
+- url: https://api-sepolia.reservoir.tools
+  description: Sepolia
+- url: https://api-shape.reservoir.tools
+  description: Shape
+- url: https://api-shape-sepolia.reservoir.tools
+  description: Shape Sepolia
+- url: https://api-soneium.reservoir.tools
+  description: Soneium
+- url: https://api-story-odyssey.reservoir.tools
+  description: Story Odyssey
+- url: https://api-xai.reservoir.tools
+  description: Xai
+- url: https://api-zero.reservoir.tools
+  description: Zero
+- url: https://api-zero-testnet.reservoir.tools
+  description: Zero Testnet
+- url: https://api-zksync.reservoir.tools
+  description: zkSync
+- url: https://api-zora.reservoir.tools
+  description: Zora
+security:
+- API_KEY: []
+tags:
+- name: Misc
+paths:
+  /execute/auth-signature/v1:
+    post:
+      summary: Attach a signature to an existing auth challenge
+      operationId: postExecuteAuthsignatureV1
+      parameters:
+      - description: Signature to attach to the auth challenge
+        name: signature
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model530'
+      tags:
+      - Misc
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/postAuthSignatureV1Response'
+      x-order: 50
+  /execute/cancel-signature/v1:
+    post:
+      summary: Off-chain cancel orders
+      operationId: postExecuteCancelsignatureV1
+      description: If your order was created using the Seaport Oracle to allow off chain & gasless cancellations, you can just use the Kit's cancel modals, SDK's `cancelOrder`, or `/execute/cancel/`. Those tools will automatically access this endpoint for an oracle cancellation without you directly calling this endpoint.
+      parameters:
+      - description: Cancellation signature
+        name: signature
+        in: query
+        schema:
+          type: string
+      - description: Optional auth token used instead of the signature
+        name: auth
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model590'
+      tags:
+      - Misc
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/putSetCollectionCommunityV1Response'
+      x-order: 50
+  /execute/deposit/v1:
+    post:
+      summary: Deposit funds to the solver
+      operationId: postExecuteDepositV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model591'
+      tags:
+      - Misc
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/postExecuteDepositV1Response'
+      x-order: 50
+  /execute/permit-signature/v1:
+    post:
+      summary: Attach a signature to an existing permit
+      operationId: postExecutePermitsignatureV1
+      parameters:
+      - description: Signature to attach to the permit
+        name: signature
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model614'
+      tags:
+      - Misc
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/putSetCollectionCommunityV1Response'
+      x-order: 50
+  /execute/pre-signature/v1:
+    post:
+      summary: Attach a signature to an existing pre-signature
+      operationId: postExecutePresignatureV1
+      parameters:
+      - description: Signature to attach to the pre-signature
+        name: signature
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model615'
+      tags:
+      - Misc
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/putSetCollectionCommunityV1Response'
+      x-order: 50
+  /execute/results/v1:
+    post:
+      summary: Send the success status of an execution
+      operationId: postExecuteResultsV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model616'
+      tags:
+      - Misc
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/postExecuteResultsV1Response'
+      x-order: 50
+  /execute/solve/capacity/v2:
+    post:
+      summary: Get the capacity for indirect filling via a solver
+      operationId: postExecuteSolveCapacityV2
+      requestBody:
+        $ref: '#/components/requestBodies/Model660'
+      tags:
+      - Misc
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/postExecuteSolveCapacityV2Response'
+      x-order: 50
+  /execute/solve/v1:
+    post:
+      summary: Indirectly fill an order via a solver
+      operationId: postExecuteSolveV1
+      parameters:
+      - description: Signature for the solve request
+        name: signature
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model631'
+      tags:
+      - Misc
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/postExecuteSolveV1Response'
+      x-order: 50
+  /execute/status/v1:
+    post:
+      summary: Get the status of an execution
+      operationId: postExecuteStatusV1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model632'
+      tags:
+      - Misc
+      responses:
+        '200':
+          description: Successful
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/postExecuteStatusV1Response'
+      x-order: 50
+components:
+  schemas:
+    postExecuteResultsV1Response:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    postExecuteSolveV1Response:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/status'
+    status:
+      type: object
+      properties:
+        endpoint:
+          type: string
+        method:
+          type: string
+          enum:
+          - POST
+        body:
+          type: string
+      required:
+      - endpoint
+      - method
+    price:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/currency'
+        amount:
+          $ref: '#/components/schemas/amount'
+        netAmount:
+          $ref: '#/components/schemas/netAmount'
+    Model589:
+      type: array
+      description: Ids of the orders to cancel
+      minItems: 1
+      items:
+        type: string
+    Model576:
+      type: object
+      properties:
+        gas:
+          $ref: '#/components/schemas/price'
+        relayer:
+          $ref: '#/components/schemas/price'
+    currency:
+      type: object
+      properties:
+        contract:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+        name:
+          type: string
+        symbol:
+          type: string
+        decimals:
+          type: number
+        chainId:
+          type: number
+    postExecuteSolveCapacityV2Response:
+      type: object
+      properties:
+        capacityPerRequest:
+          type: string
+          pattern: ^-?[0-9]+$
+        totalCapacity:
+          type: string
+          pattern: ^-?[0-9]+$
+        userBalance:
+          $ref: '#/components/schemas/userBalance'
+        maxPricePerItem:
+          type: string
+          pattern: ^-?[0-9]+$
+      required:
+      - capacityPerRequest
+      - totalCapacity
+      - maxPricePerItem
+    amount:
+      type: object
+      description: Amount with fees & royalties included.
+      properties:
+        raw:
+          type: string
+          pattern: ^-?[0-9]+$
+        decimal:
+          type: number
+        usd:
+          type: number
+        native:
+          type: number
+    Model592:
+      type: object
+      properties:
+        id:
+          type: string
+        action:
+          type: string
+        description:
+          type: string
+        kind:
+          type: string
+          enum:
+          - transaction
+        items:
+          $ref: '#/components/schemas/Model580'
+      required:
+      - id
+      - action
+      - description
+      - kind
+      - items
+    Model632:
+      type: object
+      properties:
+        kind:
+          type: string
+          description: Execution kind
+          enum:
+          - cross-chain-intent
+          - cross-chain-transaction
+          - transaction
+        id:
+          type: string
+          description: The id of the execution (eg. transaction / order / intent hash)
+        chainId:
+          type: number
+          description: Chain id where the action is happening (only relevant for 'cross-chain-transaction' actions)
+      required:
+      - kind
+      - id
+    netAmount:
+      type: object
+      description: Amount with fees & royalties removed.
+      properties:
+        raw:
+          type: string
+          pattern: ^-?[0-9]+$
+        decimal:
+          type: number
+        usd:
+          type: number
+        native:
+          type: number
+    Model615:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the pre-signature
+      required:
+      - id
+    Model616:
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Request id of the associate execute API request
+        stepId:
+          type: string
+          description: Step id of the relevant execute item
+        txHash:
+          type: string
+          description: Associated transaction hash
+          pattern: ^0x[a-fA-F0-9]{64}$
+        errorMessage:
+          type: string
+          description: Associated error message
+      required:
+      - requestId
+      - stepId
+    postExecuteStatusV1Response:
+      type: object
+      properties:
+        status:
+          type: string
+        details:
+          type: string
+        txHashes:
+          $ref: '#/components/schemas/txHashes'
+        time:
+          type: number
+      required:
+      - status
+    Model579:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - complete
+          - incomplete
+        data:
+          $ref: '#/components/schemas/metadata'
+        check:
+          $ref: '#/components/schemas/check'
+      required:
+      - status
+    Model614:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the permit
+        persist:
+          type: boolean
+          description: Whether to persist the permit or not
+      required:
+      - id
+    putSetCollectionCommunityV1Response:
+      type: object
+      properties:
+        message:
+          type: string
+    Model590:
+      type: object
+      properties:
+        orderIds:
+          $ref: '#/components/schemas/Model589'
+        orderKind:
+          type: string
+          description: 'Exchange protocol used to bulk cancel order. Example: `seaport-v1.5`'
+          enum:
+          - seaport-v1.4
+          - seaport-v1.5
+          - seaport-v1.6
+          - alienswap
+          - mintify
+          - blur-bid
+          - payment-processor-v2
+          - payment-processor-v2.1
+      required:
+      - orderIds
+      - orderKind
+    Model631:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+          - cross-chain-intent
+        request:
+          type: string
+        tx:
+          type: string
+          pattern: ^0x[a-fA-F0-9]*$
+      required:
+      - kind
+    Model580:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model579'
+    Model593:
+      type: array
+      items:
+        $ref: '#/components/schemas/Model592'
+    check:
+      type: object
+      description: The details of the endpoint for checking the status of the step
+      properties:
+        endpoint:
+          type: string
+        method:
+          type: string
+          enum:
+          - POST
+        body:
+          type: string
+      required:
+      - endpoint
+      - method
+    Model530:
+      type: object
+      properties:
+        kind:
+          type: string
+          description: Type of auth
+          enum:
+          - blur
+          - erc721c
+          - opensea
+        id:
+          type: string
+          description: Id of the auth challenge
+      required:
+      - kind
+      - id
+    txHashes:
+      type: array
+      items:
+        type: string
+        pattern: ^0x[a-fA-F0-9]{64}$
+    postExecuteDepositV1Response:
+      type: object
+      properties:
+        steps:
+          $ref: '#/components/schemas/Model593'
+        fees:
+          $ref: '#/components/schemas/Model576'
+    userBalance:
+      type: object
+      properties:
+        currentChain:
+          type: string
+          pattern: ^-?[0-9]+$
+        allChains:
+          type: string
+          pattern: ^-?[0-9]+$
+      required:
+      - currentChain
+      - allChains
+    Model660:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+          - cross-chain-intent
+        user:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{40}$
+      required:
+      - kind
+    Model591:
+      type: object
+      properties:
+        user:
+          type: string
+          description: User depositing
+          pattern: ^0x[a-fA-F0-9]{40}$
+        amount:
+          type: string
+          description: Amount to deposit
+          pattern: ^-?[0-9]+$
+      required:
+      - user
+      - amount
+    metadata:
+      type: object
+    postAuthSignatureV1Response:
+      type: object
+      properties:
+        auth:
+          type: string
+  requestBodies:
+    Model660:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Model660'
+  securitySchemes:
+    API_KEY:
+      type: apiKey
+      name: x-api-key
+      in: header
+      x-default: demo-api-key
+x-alt-definitions:
+  data:
+    type: object
+    properties:
+      collectionId:
+        type: string
+      collectionName:
+        type: string
+      tokenName:
+        type: string
+      image:
+        type: string
+  metadata:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - token
+      data:
+        $ref: '#/x-alt-definitions/data'
+  Model1:
+    type: object
+    properties:
+      collectionId:
+        type: string
+      collectionName:
+        type: string
+      image:
+        type: string
+  Model2:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - collection
+      data:
+        $ref: '#/x-alt-definitions/Model1'
+  Model3:
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+    required:
+    - value
+  attributes:
+    type: array
+    items:
+      $ref: '#/x-alt-definitions/Model3'
+  Model4:
+    type: object
+    properties:
+      collectionId:
+        type: string
+      collectionName:
+        type: string
+      attributes:
+        $ref: '#/x-alt-definitions/attributes'
+      image:
+        type: string
+  Model5:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - attribute
+      data:
+        $ref: '#/x-alt-definitions/Model4'
+  token:
+    type: object
+    properties:
+      tokenId:
+        type: string
+        pattern: ^-?[0-9]+$
+      name:
+        type: string
+      image:
+        type: string
+      isSpam:
+        type: boolean
+      isNsfw:
+        type: boolean
+  collection:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      image:
+        type: string
+      isSpam:
+        type: boolean
+      isNsfw:
+        type: boolean
+  Model6:
+    type: object
+    properties:
+      token:
+        $ref: '#/x-alt-definitions/token'
+      collection:
+        $ref: '#/x-alt-definitions/collection'
+  criteria:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - token
+      data:
+        $ref: '#/x-alt-definitions/Model6'
+  Model7:
+    type: object
+    properties:
+      collection:
+        $ref: '#/x-alt-definitions/collection'
+  Model8:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - collection
+      data:
+        $ref: '#/x-alt-definitions/Model7'
+  Model9:
+    type: object
+    properties:
+      collection:
+        $ref: '#/x-alt-definitions/collection'
+      attribute:
+        $ref: '#/x-alt-definitions/Model3'
+  Model10:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - attribute
+      data:
+        $ref: '#/x-alt-definitions/Model9'
+  Model11:
+    type: object
+    properties:
+      tokenSetId:
+        type: string
+  Model12:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - custom
+      data:
+        $ref: '#/x-alt-definitions/Model11'
+  Model13:
+    type: object
+    properties:
+      collectionName:
+        type: string
+      tokenName:
+        type: string
+      image:
+        type: string
+  Model14:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - token
+      data:
+        $ref: '#/x-alt-definitions/Model13'
+  Model15:
+    type: object
+    properties:
+      collectionName:
+        type: string
+      image:
+        type: string
+  Model16:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - collection
+      data:
+        $ref: '#/x-alt-definitions/Model15'
+  Model17:
+    type: object
+    properties:
+      collectionName:
+        type: string
+      attributes:
+        $ref: '#/x-alt-definitions/attributes'
+      image:
+        type: string
+  Model18:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - attribute
+      data:
+        $ref: '#/x-alt-definitions/Model17'
+  currency:
+    type: object
+    properties:
+      contract:
+        type: string
+        pattern: ^0x[a-fA-F0-9]{40}$
+      name:
+        type: string
+      symbol:
+        type: string
+      decimals:
+        type: number
+      chainId:
+        type: number
+  amount:
+    type: object
+    description: Amount with fees & royalties included.
+    properties:
+      raw:
+        type: string
+        pattern: ^-?[0-9]+$
+      decimal:
+        type: number
+      usd:
+        type: number
+      native:
+        type: number
+  netAmount:
+    type: object
+    description: Amount with fees & royalties removed.
+    properties:
+      raw:
+        type: string
+        pattern: ^-?[0-9]+$
+      decimal:
+        type: number
+      usd:
+        type: number
+      native:
+        type: number
+  start:
+    type: object
+    properties:
+      currency:
+        $ref: '#/x-alt-definitions/currency'
+      amount:
+        $ref: '#/x-alt-definitions/amount'
+      netAmount:
+        $ref: '#/x-alt-definitions/netAmount'
+  price:
+    type: object
+    properties:
+      start:
+        $ref: '#/x-alt-definitions/start'
+      end:
+        $ref: '#/x-alt-definitions/start'
+  time:
+    type: object
+    properties:
+      start:
+        type: number
+      end:
+        type: number
+  Model19:
+    type: object
+    properties:
+      price:
+        $ref: '#/x-alt-definitions/price'
+      time:
+        $ref: '#/x-alt-definitions/time'
+  dynamicPricing:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - dutch
+      data:
+        $ref: '#/x-alt-definitions/Model19'
+  prices:
+    type: array
+    items:
+      $ref: '#/x-alt-definitions/start'
+  Model20:
+    type: object
+    properties:
+      pool:
+        type: string
+      prices:
+        $ref: '#/x-alt-definitions/prices'
+  Model21:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - pool
+      data:
+        $ref: '#/x-alt-definitions/Model20'
+  Model22:
+    type: object
+    properties:
+      fromBlock:
+        type: number
+      toBlock:
+        type: number
+      blockRange:
+        type: number
+    required:
+    - fromBlock
+    - toBlock
+  Model23:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - all
+      data:
+        $ref: '#/x-alt-definitions/Model22'
+  Model24:
+    type: object
+    properties:
+      contract:
+        type: string
+        pattern: ^0x[a-fA-F0-9]{40}$
+      fromTimestamp:
+        type: number
+      toTimestamp:
+        type: number
+      timestampRange:
+        type: number
+    required:
+    - contract
+    - fromTimestamp
+    - toTimestamp
+  Model25:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - contract
+      data:
+        $ref: '#/x-alt-definitions/Model24'
+  Model26:
+    type: object
+    properties:
+      txHash:
+        type: string
+        pattern: ^0x[a-fA-F0-9]{64}$
+    required:
+    - txHash
+  Model27:
+    type: object
+    properties:
+      kind:
+        type: string
+        enum:
+        - transaction
+      data:
+        $ref: '#/x-alt-definitions/Model26'
+  events:
+    type: array
+    items:
+      type: string
+  eventsType:
+    type: array
+    items:
+      type: string
+      enum:
+      - ftTransferEvents
+  syncDetails:
+    type: object
+    properties:
+      method:
+        type: string
+        enum:
+        - events
+      events:
+        $ref: '#/x-alt-definitions/events'
+      eventsType:
+        $ref: '#/x-alt-definitions/eventsType'
+  Model28:
+    type: object
+    properties:
+      method:
+        type: string
+        enum:
+        - address
+      address:
+        type: string
+        pattern: ^0x[a-fA-F0-9]{40}$
+  collections:
+    type: array
+    description: 'Array of collection ids to disable metadata for. Max limit is 50. Example: `collections[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63 collections[1]: 0x521f9c7505005cfa19a8e5786a9c3c9c9f5e6f42`'
+    maxItems: 50
+    items:
+      type: string
+      x-convert:
+        case: lower
+  Model29:
+    type: array
+    description: 'Update to one or more collections. Max limit is 50. Example: `0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63`'
+    minItems: 1
+    maxItems: 50
+    items:
+      type: string
+      x-convert:
+        case: lower
+  exactOrderSource:
+    type: array
+    maxItems: 2
+    items:
+      type: string
+      pattern: ^[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$|localhost
+      x-convert:
+        case: lower
+  ids:
+    type: array
+    description: 'Array of order ids to invalidate. Max limit is 50. Example: `ids[0]: 0x505b35e849bccbd787bf670b3e85577fa5c2814cfa0ecab50867e4dc5b5362d4 ids[1]: 0xd0e83bdeb5b79352d4a3657387d1e438e9df68d773bb3b3c88da41948ef48188`'
+    maxItems: 50
+    items:
+      type: string
+  tokens:
+    type: array
+    description: 'Array of tokens to disable or reenable metadata for. Max limit is 50. Example: `tokens[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:704 tokens[1]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:979`'
+    maxItems: 50
+    items:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}:[0-9]+$
+      x-convert:
+        case: lower
+  Model30:
+    type: array
+    description: 'Array of tokens. Max limit is 50. Example: `tokens[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:704 tokens[1]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:979`'
+    maxItems: 50
+    items:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}:[0-9]+$
+      x-convert:
+        case: lower
+  Model31:
+    type: array
+    description: 'Array of tokens to refresh. Max limit is 50. Example: `tokens[0]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:704 tokens[1]: 0x8d04a8c79ceb0889bdd12acdf3fa9d207ed3ff63:979`'
+    maxItems: 50
+    items:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}:[0-9]+$
+      x-convert:
+        case: lower
+x-provenance:
+  method: searched
+  source: https://nft.reservoir.tools/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://nft.reservoir.tools/reference/getapikeyskeyratelimits.md
+  - https://nft.reservoir.tools/reference/getchainstatsv1.md
+  - https://nft.reservoir.tools/reference/getcollectionsactivityv6.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectionattributesallv4.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectionattributesexplorev6.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectionidbidsv1.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectionmarketplaceconfigurationsv2.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectionownersdistributionv1.md
+  - https://nft.reservoir.tools/reference/getcollectionscollectiontoptradersv1.md
+  - https://nft.reservoir.tools/reference/getcollectionsdailyvolumesv1.md
+  - https://nft.reservoir.tools/reference/getcollectionssearchv1.md
+  - https://nft.reservoir.tools/reference/getcollectionssetscollectionssetidownersdistributionv1.md
+  - https://nft.reservoir.tools/reference/getcollectionstrendingmintsv1.md
+  - https://nft.reservoir.tools/reference/getcollectionstrendingmintsv2.md
+  - https://nft.reservoir.tools/reference/getcollectionstrendingv1.md
+  - https://nft.reservoir.tools/reference/getcollectionsv7.md
+  - https://nft.reservoir.tools/reference/getcrosspostingordersv1.md
+  - https://nft.reservoir.tools/reference/geteventsasksv3.md
+  - https://nft.reservoir.tools/reference/geteventsbidsv3.md
+  - https://nft.reservoir.tools/reference/geteventscollectionsflooraskv2.md
+  - https://nft.reservoir.tools/reference/geteventscollectionstopbidv2.md
+  - https://nft.reservoir.tools/reference/geteventstokensflooraskv4.md
+  - https://nft.reservoir.tools/reference/getordersasksv5.md
+  - https://nft.reservoir.tools/reference/getordersbidsv6.md
+  - https://nft.reservoir.tools/reference/getordersdepthv1.md
+  - https://nft.reservoir.tools/reference/getordersusersusertopbidsv4.md
+  - https://nft.reservoir.tools/reference/getownerscommoncollectionsv1.md
+  - https://nft.reservoir.tools/reference/getownerscrosscollectionsv1.md
+  - https://nft.reservoir.tools/reference/getownersv2.md
+  - https://nft.reservoir.tools/reference/getredirectcollectionscollectionimagev1.md
+  - https://nft.reservoir.tools/reference/getredirectcurrencyaddressiconv1.md
+  - https://nft.reservoir.tools/reference/getredirectsourcessourcelogov2.md
+  - https://nft.reservoir.tools/reference/getredirectsourcessourcetokenstokenlinkv2.md
+  - https://nft.reservoir.tools/reference/getredirecttokenstokenimagev1.md
+  - https://nft.reservoir.tools/reference/getsalesv6.md
+  - https://nft.reservoir.tools/reference/getsearchcollectionsv2.md
+  - https://nft.reservoir.tools/reference/getsourcesv1.md
+  - https://nft.reservoir.tools/reference/getstatsv2.md
+  - https://nft.reservoir.tools/reference/gettokensbootstrapv1.md
+  - https://nft.reservoir.tools/reference/gettokensflagchangesv1.md
+  - https://nft.reservoir.tools/reference/gettokensfloorv1.md
+  - https://nft.reservoir.tools/reference/gettokensidsv1.md
+  - https://nft.reservoir.tools/reference/gettokenstokenactivityv5.md
+  - https://nft.reservoir.tools/reference/gettokenstokenasksv1.md
+  - https://nft.reservoir.tools/reference/gettokenstokenbidsv1.md
+  - https://nft.reservoir.tools/reference/gettokensv7.md
+  - https://nft.reservoir.tools/reference/gettransactionssyncedv2.md
+  - https://nft.reservoir.tools/reference/gettransactionstxhashsyncedv1.md
+  - https://nft.reservoir.tools/reference/gettransfersbulkv2.md
+  - https://nft.reservoir.tools/reference/gettransfersv4.md
+  - https://nft.reservoir.tools/reference/getusersactivityv6.md
+  - https://nft.reservoir.tools/reference/getusersuserasksv1.md
+  - https://nft.reservoir.tools/reference/getusersuserbidsv1.md
+  - https://nft.reservoir.tools/reference/getusersusercollectionsv4.md
+  - https://nft.reservoir.tools/reference/getusersusertokensv10.md
+  - https://nft.reservoir.tools/reference/postcollectionscollectionoverridev1.md
+  - https://nft.reservoir.tools/reference/postcollectionscollectionoverridev2.md
+  - https://nft.reservoir.tools/reference/postcollectionsdisablemetadatav1.md
+  - https://nft.reservoir.tools/reference/postcollectionsnsfwstatusv1.md
+  - https://nft.reservoir.tools/reference/postcollectionsrefreshv2.md
+  - https://nft.reservoir.tools/reference/postcollectionssetsv1.md
+  - https://nft.reservoir.tools/reference/postcollectionsspamstatusv1.md
+  - https://nft.reservoir.tools/reference/postcontractssetsv1.md
+  - https://nft.reservoir.tools/reference/postexecuteauthsignaturev1.md
+  - https://nft.reservoir.tools/reference/postexecutebidv5.md
+  - https://nft.reservoir.tools/reference/postexecutebuyv7.md
+  - https://nft.reservoir.tools/reference/postexecutecallv1.md
+  - https://nft.reservoir.tools/reference/postexecutecancelsignaturev1.md
+  - https://nft.reservoir.tools/reference/postexecutecancelv3.md
+  - https://nft.reservoir.tools/reference/postexecutedepositv1.md
+  - https://nft.reservoir.tools/reference/postexecutelistv5.md
+  - https://nft.reservoir.tools/reference/postexecutemintv1.md
+  - https://nft.reservoir.tools/reference/postexecutepermitsignaturev1.md
+  - https://nft.reservoir.tools/reference/postexecutepresignaturev1.md
+  - https://nft.reservoir.tools/reference/postexecuteresultsv1.md
+  - https://nft.reservoir.tools/reference/postexecutesellv7.md
+  - https://nft.reservoir.tools/reference/postexecutesolvecapacityv1.md
+  - https://nft.reservoir.tools/reference/postexecutesolvecapacityv2.md
+  - https://nft.reservoir.tools/reference/postexecutesolvev1.md
+  - https://nft.reservoir.tools/reference/postexecutestatusv1.md
+  - https://nft.reservoir.tools/reference/postexecutetransferv1.md
+  - https://nft.reservoir.tools/reference/postmanagementcosignersv1.md
+  - https://nft.reservoir.tools/reference/postmanagementmintssimulatev1.md
+  - https://nft.reservoir.tools/reference/postmanagementorderssimulatev1.md
+  - https://nft.reservoir.tools/reference/postordersinvalidatev1.md
+  - https://nft.reservoir.tools/reference/postorderv4.md
+  - https://nft.reservoir.tools/reference/posttokensdisablemetadatav1.md
+  - https://nft.reservoir.tools/reference/posttokensetsv2.md
+  - https://nft.reservoir.tools/reference/posttokensflagv1.md
+  - https://nft.reservoir.tools/reference/posttokensnsfwstatusv1.md
+  - https://nft.reservoir.tools/reference/posttokensrefreshv2.md
+  - https://nft.reservoir.tools/reference/posttokensspamstatusv1.md
+  - https://nft.reservoir.tools/reference/posttokenstokenoverridev1.md
+  - https://reservoirprotocol.readme.io/reference/getapikeyskeyratelimits.md
+  - https://reservoirprotocol.readme.io/reference/getchainstatsv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionsactivityv6.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectionattributesallv4.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectionattributesexplorev6.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectionidbidsv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectionmarketplaceconfigurationsv2.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectionownersdistributionv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionscollectiontoptradersv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionsdailyvolumesv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionssearchv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionssetscollectionssetidownersdistributionv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionstrendingmintsv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionstrendingmintsv2.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionstrendingv1.md
+  - https://reservoirprotocol.readme.io/reference/getcollectionsv7.md
+  - https://reservoirprotocol.readme.io/reference/getcrosspostingordersv1.md
+  - https://reservoirprotocol.readme.io/reference/geteventsasksv3.md
+  - https://reservoirprotocol.readme.io/reference/geteventsbidsv3.md
+  - https://reservoirprotocol.readme.io/reference/geteventscollectionsflooraskv2.md
+  - https://reservoirprotocol.readme.io/reference/geteventscollectionstopbidv2.md
+  - https://reservoirprotocol.readme.io/reference/geteventstokensflooraskv4.md
+  - https://reservoirprotocol.readme.io/reference/getordersasksv5.md
+  - https://reservoirprotocol.readme.io/reference/getordersbidsv6.md
+  - https://reservoirprotocol.readme.io/reference/getordersdepthv1.md
+  - https://reservoirprotocol.readme.io/reference/getordersusersusertopbidsv4.md
+  - https://reservoirprotocol.readme.io/reference/getownerscommoncollectionsv1.md
+  - https://reservoirprotocol.readme.io/reference/getownerscrosscollectionsv1.md
+  - https://reservoirprotocol.readme.io/reference/getownersv2.md
+  - https://reservoirprotocol.readme.io/reference/getredirectcollectionscollectionimagev1.md
+  - https://reservoirprotocol.readme.io/reference/getredirectcurrencyaddressiconv1.md
+  - https://reservoirprotocol.readme.io/reference/getredirectsourcessourcelogov2.md
+  - https://reservoirprotocol.readme.io/reference/getredirectsourcessourcetokenstokenlinkv2.md
+  - https://reservoirprotocol.readme.io/reference/getredirecttokenstokenimagev1.md
+  - https://reservoirprotocol.readme.io/reference/getsalesv6.md
+  - https://reservoirprotocol.readme.io/reference/getsearchcollectionsv2.md
+  - https://reservoirprotocol.readme.io/reference/getsourcesv1.md
+  - https://reservoirprotocol.readme.io/reference/getstatsv2.md
+  - https://reservoirprotocol.readme.io/reference/gettokensbootstrapv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokensflagchangesv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokensfloorv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokensidsv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokenstokenactivityv5.md
+  - https://reservoirprotocol.readme.io/reference/gettokenstokenasksv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokenstokenbidsv1.md
+  - https://reservoirprotocol.readme.io/reference/gettokensv7.md
+  - https://reservoirprotocol.readme.io/reference/gettransactionssyncedv2.md
+  - https://reservoirprotocol.readme.io/reference/gettransactionstxhashsyncedv1.md
+  - https://reservoirprotocol.readme.io/reference/gettransfersbulkv2.md
+  - https://reservoirprotocol.readme.io/reference/gettransfersv4.md
+  - https://reservoirprotocol.readme.io/reference/getusersactivityv6.md
+  - https://reservoirprotocol.readme.io/reference/getusersuserasksv1.md
+  - https://reservoirprotocol.readme.io/reference/getusersuserbidsv1.md
+  - https://reservoirprotocol.readme.io/reference/getusersusercollectionsv4.md
+  - https://reservoirprotocol.readme.io/reference/getusersusertokensv10.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionscollectionoverridev1.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionscollectionoverridev2.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionsdisablemetadatav1.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionsnsfwstatusv1.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionsrefreshv2.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionssetsv1.md
+  - https://reservoirprotocol.readme.io/reference/postcollectionsspamstatusv1.md
+  - https://reservoirprotocol.readme.io/reference/postcontractssetsv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecuteauthsignaturev1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutebidv5.md
+  - https://reservoirprotocol.readme.io/reference/postexecutebuyv7.md
+  - https://reservoirprotocol.readme.io/reference/postexecutecallv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutecancelsignaturev1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutecancelv3.md
+  - https://reservoirprotocol.readme.io/reference/postexecutedepositv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutelistv5.md
+  - https://reservoirprotocol.readme.io/reference/postexecutemintv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutepermitsignaturev1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutepresignaturev1.md
+  - https://reservoirprotocol.readme.io/reference/postexecuteresultsv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutesellv7.md
+  - https://reservoirprotocol.readme.io/reference/postexecutesolvecapacityv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutesolvecapacityv2.md
+  - https://reservoirprotocol.readme.io/reference/postexecutesolvev1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutestatusv1.md
+  - https://reservoirprotocol.readme.io/reference/postexecutetransferv1.md
+  - https://reservoirprotocol.readme.io/reference/postmanagementcosignersv1.md
+  - https://reservoirprotocol.readme.io/reference/postmanagementmintssimulatev1.md
+  - https://reservoirprotocol.readme.io/reference/postmanagementorderssimulatev1.md
+  - https://reservoirprotocol.readme.io/reference/postordersinvalidatev1.md
+  - https://reservoirprotocol.readme.io/reference/postorderv4.md
+  - https://reservoirprotocol.readme.io/reference/posttokensdisablemetadatav1.md
+  - https://reservoirprotocol.readme.io/reference/posttokensetsv2.md
+  - https://reservoirprotocol.readme.io/reference/posttokensflagv1.md
+  - https://reservoirprotocol.readme.io/reference/posttokensnsfwstatusv1.md
+  - https://reservoirprotocol.readme.io/reference/posttokensrefreshv2.md
+  - https://reservoirprotocol.readme.io/reference/posttokensspamstatusv1.md
+  - https://reservoirprotocol.readme.io/reference/posttokenstokenoverridev1.md
+  merge:
+    pages: 186
+    deduped: 1487
+    conflicts_kept_first: 0
