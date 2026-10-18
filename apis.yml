@@ -113,6 +113,8 @@ apis:
   humanURL: https://reservoir.dev/
   baseURL: https://api.reservoir.tools
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -225,6 +227,8 @@ apis:
   humanURL: https://reservoir.dev/
   baseURL: https://api.reservoir.tools
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -253,6 +257,8 @@ apis:
   humanURL: https://reservoir.dev/
   baseURL: https://api.reservoir.tools
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -337,6 +343,8 @@ apis:
   humanURL: https://reservoir.dev/
   baseURL: https://api.reservoir.tools
   tags:
+  - Marketplace
+  tags_raw:
   - marketplace
   properties:
   - type: OpenAPI
@@ -364,7 +372,8 @@ apis:
   description: The Misc API from Reservoir — 9 operation(s) for misc.
   humanURL: https://reservoir.dev/
   baseURL: https://api.reservoir.tools
-  tags:
+  tags: []
+  tags_raw:
   - Misc
   properties:
   - type: OpenAPI
@@ -393,6 +402,8 @@ apis:
   humanURL: https://reservoir.dev/
   baseURL: https://api.reservoir.tools
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
