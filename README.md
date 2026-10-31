@@ -1,4 +1,4 @@
-# Reservoir (reservoir)
+# Reservoir
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,57 +64,159 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Reservoir was an NFT marketplace infrastructure and data API provider that aggregated listings, bids, and sales across major NFT marketplaces including OpenSea, Blur, and others. The platform powered buying, selling, and analytics through a unified API, SDK, and UI kit layer spanning 30+ EVM-compatible blockchains. It was operated by Uneven Labs and used by major Web3 products including Coinbase, MetaMask, and Magic Eden. Reservoir raised $14M in Series A funding from Union Square Ventures. The Reservoir NFT API and all associated services were sunset on October 15, 2025.
+NFT marketplace infrastructure and data API for aggregating listings, bids, and sales across OpenSea, Blur, and other markets — powers buying, selling, and analytics across 30+ EVM chains. Reservoir provided a complete suite of APIs, SDKs, and UI kits abstracting the complexity of interacting with the NFT market. The service was sunset on October 15, 2025.
 
-APIs.json: [https://raw.githubusercontent.com/api-evangelist/reservoir/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/reservoir/refs/heads/main/apis.yml)
+**Areas:** NFT · Blockchain · Marketplace · Ethereum · EVM · Liquidity · Order Book · Web3 · DeFi · Trading · Data API
 
-Naftiko: [https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=reservoir-api-evangelist&utm_content=repo](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=reservoir-api-evangelist&utm_content=repo)
+## Reservoir on APIs.io
 
-## Tags
+Everything profiled for Reservoir is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/reservoir/](https://apis.io/providers/reservoir/)** — or go straight to one of the APIs or properties below.
 
-NFT, Blockchain, Marketplace, Ethereum, EVM, Liquidity, Order Book, Web3, DeFi, Trading, Data API
+### APIs (19)
 
-## APIs
+- [Reservoir Accounts API](https://apis.io/apis/reservoir/reservoir-accounts-api/) — The Accounts API from Reservoir — 5 operation(s) for accounts.
+- [Reservoir Activity API](https://apis.io/apis/reservoir/reservoir-activity-api/) — The Activity API from Reservoir — 3 operation(s) for activity.
+- [Reservoir Attributes API](https://apis.io/apis/reservoir/reservoir-attributes-api/) — The Attributes API from Reservoir — 2 operation(s) for attributes.
+- [Reservoir Chain API](https://apis.io/apis/reservoir/reservoir-chain-api/) — The Chain API from Reservoir — 1 operation(s) for chain.
+- [Reservoir Collections API](https://apis.io/apis/reservoir/reservoir-collections-api/) — The Collections API from Reservoir — 10 operation(s) for collections.
+- [Reservoir Events API](https://apis.io/apis/reservoir/reservoir-events-api/) — The Events API from Reservoir — 3 operation(s) for events.
+- [Reservoir Manage Orders API](https://apis.io/apis/reservoir/reservoir-manage-orders-api/) — The Manage Orders API from Reservoir — 3 operation(s) for manage orders.
+- [Reservoir Management API](https://apis.io/apis/reservoir/reservoir-management-api/) — The Management API from Reservoir — 15 operation(s) for management.
+- [Reservoir Marketplace API](https://apis.io/apis/reservoir/reservoir-marketplace-api/) — The marketplace API from Reservoir — 7 operation(s) for marketplace.
+- [Reservoir Misc API](https://apis.io/apis/reservoir/reservoir-misc-api/) — The Misc API from Reservoir — 9 operation(s) for misc.
+- [Reservoir Orders API](https://apis.io/apis/reservoir/reservoir-orders-api/) — The Orders API from Reservoir — 3 operation(s) for orders.
+- [Reservoir Owners API](https://apis.io/apis/reservoir/reservoir-owners-api/) — The Owners API from Reservoir — 5 operation(s) for owners.
+- [Reservoir Redirects API](https://apis.io/apis/reservoir/reservoir-redirects-api/) — The Redirects API from Reservoir — 5 operation(s) for redirects.
+- [Reservoir Sales API](https://apis.io/apis/reservoir/reservoir-sales-api/) — The Sales API from Reservoir — 1 operation(s) for sales.
+- [Reservoir Sources API](https://apis.io/apis/reservoir/reservoir-sources-api/) — The Sources API from Reservoir — 1 operation(s) for sources.
+- [Reservoir Stats API](https://apis.io/apis/reservoir/reservoir-stats-api/) — The Stats API from Reservoir — 2 operation(s) for stats.
+- [Reservoir Tokens API](https://apis.io/apis/reservoir/reservoir-tokens-api/) — The Tokens API from Reservoir — 9 operation(s) for tokens.
+- [Reservoir Transfers API](https://apis.io/apis/reservoir/reservoir-transfers-api/) — The Transfers API from Reservoir — 1 operation(s) for transfers.
+- [Reservoir X Deprecated API](https://apis.io/apis/reservoir/reservoir-x-deprecated-api/) — The x-deprecated API from Reservoir — 8 operation(s) for x-deprecated.
 
-### Reservoir NFT API
+### Published properties
 
-All-in-one NFT data and trading API enabling developers to get NFT data, create orders, and execute trades across 30+ EVM-compatible blockchains. Aggregated liquidity from major NFT marketplaces including OpenSea and Blur. Key capabilities included:
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Trading APIs**: Buy/sell tokens, place and cancel bids, create listings, mint NFTs, transfer tokens
-- **Data APIs**: Collections, tokens, attributes, order books, sales history, user portfolios
-- **Event Streaming**: Real-time ask/bid status changes, floor price changes, activity feeds
-- **ReservoirKit**: React UI component library (BuyModal, ListModal, BidModal, SweepModal, MintModal)
-- **Reservoir SDK**: TypeScript SDK with buyToken, listToken, placeBid, acceptOffer, cancelOrder methods
-- **Supported Chains**: Ethereum, Polygon, Arbitrum, Optimism, Base, Avalanche, BSC, zkSync Era, and 20+ more
+#### MCP servers (1)
 
-Documentation: [https://nft.reservoir.tools/reference/overview](https://nft.reservoir.tools/reference/overview)
+Model Context Protocol servers that expose the API to agents.
 
-GitHub: [https://github.com/reservoirprotocol](https://github.com/reservoirprotocol)
+- [reservoir-mcp.yml](https://apis.io/servers/reservoir/reservoir-mcp-yml/)
 
-## Plans, Rate Limits & FinOps
+#### Agentic access (1)
 
-- **Plans**: [plans/reservoir-plans-pricing.yml](plans/reservoir-plans-pricing.yml) — Free, Growth, and Enterprise tiers. Free access via Developer Dashboard API key; paid plans for higher throughput.
-- **Rate Limits**: [rate-limits/reservoir-rate-limits.yml](rate-limits/reservoir-rate-limits.yml) — Per-key, per-chain limits. Queryable via `/api-keys/{key}/rate-limits`. Chain-specific keys required (one key per EVM chain).
-- **FinOps**: [finops/reservoir-finops.yml](finops/reservoir-finops.yml) — FOCUS-aligned cost allocation by chain and endpoint category; optimization via caching and event streaming over polling.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Timestamps
+- [Reservoir Agentic Access](https://apis.io/agentic-access/reservoir/reservoir-agentic-access/)
 
-- Created: 2026-06-12
-- Modified: 2026-06-12
+#### JSON Schema (6)
 
-## Common
+The data models the API reads and writes.
 
-| Type | URL |
-|------|-----|
-| Website | https://reservoir.dev/ |
-| Documentation | https://nft.reservoir.tools/reference/overview |
-| GitHub | https://github.com/reservoirprotocol |
-| LinkedIn | https://www.linkedin.com/company/uneven-labs |
-| Blog | https://reservoir.dev/blog |
-| Pricing | https://reservoir.tools/pricing |
-| StatusPage | https://status.reservoir.tools/ |
-| X | https://x.com/reservoir0x |
+- [Model538](https://apis.io/schemas/reservoir/reservoir-model538/)
+- [Model564](https://apis.io/schemas/reservoir/reservoir-model564/)
+- [Model584](https://apis.io/schemas/reservoir/reservoir-model584/)
+- [Model600](https://apis.io/schemas/reservoir/reservoir-model600/)
+- [Model611](https://apis.io/schemas/reservoir/reservoir-model611/)
+- [Model624](https://apis.io/schemas/reservoir/reservoir-model624/)
 
-## Maintainers
+#### JSON-LD (1)
 
-- **Kin Lane** — kin@apievangelist.com
+Linked-data contexts for the provider's vocabulary.
+
+- [Reservoir Context](https://apis.io/jsonld/reservoir/reservoir-context/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Reservoir API Rules](https://apis.io/rules/reservoir/reservoir-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Reservoir Authentication](https://apis.io/security/reservoir/reservoir-authentication/)
+- [Reservoir Domain Security](https://apis.io/security/reservoir/reservoir-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Reservoir Plans Pricing](https://apis.io/plans/reservoir/reservoir-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Reservoir Rate Limits](https://apis.io/rate-limits/reservoir/reservoir-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Reservoir Finops](https://apis.io/finops/reservoir/reservoir-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://reservoir.dev/)
+- [Documentation](https://nft.reservoir.tools/reference/overview)
+- [Pricing](https://reservoir.tools/pricing)
+- [Blog](https://reservoir.dev/blog)
+- [Status](https://status.reservoir.tools/)
+
+## API Evangelist rating
+
+**Kin Score 33.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 59.1 |
+| Contract governance | 22.0 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 17.9 |
+| Access clarity | 13.2 |
+
+**Agent readiness 20.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 21.3** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/reservoir/](https://apis.io/providers/reservoir/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Reservoir: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/reservoir/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
